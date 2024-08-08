@@ -1,5 +1,27 @@
-# Welcome to GitHub Desktop!
+# 我的学习笔记导航——Bybug
 
-This is your README. READMEs are where you can communicate what your project is and how to use it.
+## 声明
 
-Write your name on line 6, save it, and then head back to GitHub Desktop.
+1. 本仓库中的所有笔记均为本人在学习过程中所记录的内容，供本人复习等用途。
+2. 笔记不具备权威性，可能存在错误或遗漏。
+3. 笔记中的知识点不能保证百分之百正确，如有争议，请以权威书籍和官方文档为准。
+4. 您可以下载笔记文档进行修改和完善。
+5. 笔记的原始版本以仓库为准。修改后的版本请自行保留，修改内容的责任由修改者负责。
+
+------
+
+[TOC]
+
+
+
+---
+
+## 笔记导航
+
+[Typora教程]: .\Typora.md	"（转载）"
+[AJAX+NODE.JS+WebPack]: .\AJAX+nodejs+webpack_text.md	"（已完结）"
+
+[]: 
+
+数据结构与算法
+

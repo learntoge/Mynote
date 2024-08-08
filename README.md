@@ -10,18 +10,3 @@
 
 ------
 
-[TOC]
-
-
-
----
-
-## 笔记导航
-
-[Typora教程]: .\Typora.md	"（转载）"
-[AJAX+NODE.JS+WebPack]: .\AJAX+nodejs+webpack_text.md	"（已完结）"
-
-[]: 
-
-数据结构与算法
-

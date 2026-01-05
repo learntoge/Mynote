@@ -1,0 +1,999 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; white-space: nowrap; overflow: visible; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<style type='text/css'  id="style-codemirror">.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title>Blender</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#blender笔记------by-bug">Blender笔记——<em><strong>By Bug</strong></em></a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#前言">前言</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#软件基础">软件基础</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#下载与安装">下载与安装</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#软件快捷键操作">软件快捷键操作</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#物体控制">物体控制</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#软件页面介绍">软件页面介绍</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#案例珍珠耳环少女">案例：珍珠耳环少女</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#建模操作">建模操作</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#点线面的选择与控制">点线面的选择与控制</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#十大模型操作">十大模型操作</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#修改器">修改器</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#案例物体建模">案例：物体建模</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#模型①螺母"><strong>模型①螺母</strong></a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#模型②蘑菇"><strong>模型②蘑菇</strong></a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#模型③树桩"><strong>模型③树桩</strong></a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#模型④花朵"><strong>模型④花朵</strong></a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#模型⑤龟背竹"><strong>模型⑤龟背竹</strong></a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#模型⑥树干"><strong>模型⑥树干</strong></a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#阵列修改器与晶格形变">阵列修改器与晶格形变</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#曲线修改器建模">曲线（修改器）建模</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#父子级和蒙皮修改器">父子级和蒙皮修改器</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#置换修改器">置换修改器</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#案例小狐狸建模">案例：小狐狸建模</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#材质篇">材质篇</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#材质基础">材质基础</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#添加删除材质">添加删除材质</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#原理化bsdf">原理化BSDF</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#添加有纹理的材质">添加有纹理的材质</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#添加渐变纹理">添加渐变纹理</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#添加程序化纹理">添加程序化纹理</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#用蒙版做纹理叠加">用蒙版做纹理叠加</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#凹凸和置换形变">凹凸和置换形变</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#为模型添加凹凸感">为模型添加凹凸感</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#使用网络下载的材质">使用网络下载的材质</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#置换形变">置换形变</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#混合材质节点">混合材质节点</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#node-wrangler常用操作">Node Wrangler常用操作</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#简单的uv纹理绘制">简单的UV纹理绘制</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#什么是uv">什么是UV?</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#为什么要用uv">为什么要用UV?</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#如何查看模型的uv展开图">如何查看模型的UV展开图</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#uv绘制的基本步骤">UV绘制的基本步骤</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#案例为小狐狸上色">案例：为小狐狸上色</a></div><ul class="outline-children"></ul></li></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#添加粒子">添加粒子</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发射体粒子">发射体粒子</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#毛发粒子">毛发粒子</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#案例火焰粒子">案例：火焰粒子</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#场景灯光">场景灯光</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#场景灯光打光">场景灯光打光</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#三点打光">三点打光</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#导入第三方素材">导入第三方素材</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#如何导入第三方素材">如何导入第三方素材</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#导入其他格式的模型">导入其他格式的模型</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#场景搭建">场景搭建</a></div><ul class="outline-children"></ul></li></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#动画制作">动画制作</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#时间轴动画基础">时间轴动画基础</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#曲线编辑器">曲线编辑器</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#形态键动画">形态键动画</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#形态键介绍">形态键介绍</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#案例蝴蝶飞舞形态动画">案例：蝴蝶飞舞形态动画</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#案例蝴蝶飞舞路径动画">案例：蝴蝶飞舞路径动画</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#骨骼动画">骨骼动画</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#骨骼的三种模式">骨骼的三种模式</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#权重"><strong>权重</strong></a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#物体约束">物体约束</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#合成">合成</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#合成面板设置">合成面板设置</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#渲染输出视频">渲染输出视频</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#检查输出属性设置">检查输出属性设置</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#eevee输出设置">Eevee输出设置</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#cycles输出设置">Cycles输出设置</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#输出mp4视频">输出MP4视频</a></div><ul class="outline-children"></ul></li></ul></li></ul></li></div></div><div id='write'  class=''><p><a href='../index.html'><span>返回首页</span></a></p><h1 id='blender笔记------by-bug'><span>Blender笔记——</span><em><strong><span>By Bug</span></strong></em></h1><h1 id='前言'><span>前言</span></h1><p><span>首先感谢你使用这篇笔记。【😀】</span></p><p><span>这篇笔记记录的是作者学习Blender是所撰写的，笔记中所有内容仅代表个人观点和操作方法，不一定完全正确。如你有疑问，请查阅官方文档等资料进行确认。</span></p><p>&nbsp;</p><p><strong><span>关于BLENDER</span></strong></p><p><span>最初，Blender 是荷兰的一个视频工作组 NeoGeo 与 Not a Number Technologies（NaN）设计为内部使用的程序。但后来其主要程序设计者 </span><strong><a href='http://zh.wikipedia.org/wiki/Ton_Roosendaal'><span>Ton Roosendaal</span></a></strong><span> 于1998年6月将其进一步发展，并对外发布这个程序。</span></p><p><span>在经过债权人同意后，Blender需要缴付一次性报酬十万欧元后变为开源软件，并以 </span><strong><a href='http://zh.wikipedia.org/wiki/GNU通用公共许可证'><span>GNU通用公共许可证</span></a></strong><span> 发布。在2002年7月18日，Ton 开始为 Blender筹集资金；同年9月7日，Blender宣布筹集足够资金，并将其源码对外公布。因此，Blender现在是 </span><strong><a href='http://zh.wikipedia.org/zh-cn/开源软件'><span>开源软件</span></a></strong><span> ，并由 </span><strong><a href='https://www.blender.org/about/foundation/'><span>Blender基金会</span></a></strong><span> 维护与更新。</span></p><p><span>Blender 是一款免费的开源 3D 创作套件。它支持整个 3D 流程 — 建模、装配、动画、模拟、渲染、合成和运动跟踪，甚至视频编辑和游戏资产创建。高级用户使用 Blender 的 Python 脚本 API 来定制应用程序并编写专用工具；这些工具通常包含在 Blender 的未来版本中。Blender 非常适合个人和小型工作室，他们受益于其统一的流程和响应式开发流程。展示中提供了许多基于 Blender 的项目示例。</span></p><p><span>Blender 是跨平台的，在 Linux、Windows 和 Macintosh 计算机上运行同样出色。其界面使用 OpenGL 来提供一致的体验。为了确认特定的兼容性，支持的平台列表显示了开发团队定期测试的平台。</span></p><p>&nbsp;</p><p><strong><span>资料</span></strong></p><p><a href='https://www.bilibili.com/video/BV14u41147YH?spm_id_from=333.788.videopod.episodes&amp;vd_source=4fd4da6d6671bb3e6a059f1200d7334f'><span>【Kurt】Blender零基础入门教程 | Blender中文区新手必刷教程(已完结)</span><em><span>哔哩哔哩</span></em><span>bilibili</span></a></p><p><a href='https://www.blendercn.org/'><span>Blender中国社区 – 这里有Blender的最新资讯</span></a></p><p><a href='https://www.blender.org/'><span>blender.org 英文官网</span></a></p><p><span>关于素材，请到视频评论区获取下载。</span></p><p>&nbsp;</p><p><span>下载免费的材质</span>
+<a href='https://ambientcg.com/'><span>ambientCG - CC0 Textures, HDRIs and Models</span></a></p><p><a href='https://polyhaven.com/'><span>Poly Haven</span></a></p><p>&nbsp;</p><p><strong><span>前言结束，笔记正文开始</span></strong></p><p>&nbsp;</p><h1 id='软件基础'><span>软件基础</span></h1><p>&nbsp;</p><h2 id='下载与安装'><span>下载与安装</span></h2><ol start='' ><li><p><span>进入Blender官网/中文社区，选择download，下载软件安装包</span></p><p><a href='https://www.blender.org/download/'><span>Download — blender.org</span></a><img src="./Blender.assets/image-20250225225716514.png" alt="image-20250225225716514"></p></li><li><p><span>下载安装包完成后，执行安装操作即可。</span></p></li><li><p><span>等待安装完成后，运行软件，在第一次进入软件时，需要选择软件语言，【简体中文】或根据需求进行喧杂，其他配置默认即可。</span></p><p><strong><span>点击窗口空白处，可以让欢迎页面消失。</span></strong><img src="./Blender.assets/image-20250225225951951.png" alt="image-20250225225951951"></p></li><li><p><span>这样软件安装完成，就可以下面的学习了。</span></p></li></ol><p>&nbsp;</p><h2 id='软件快捷键操作'><span>软件快捷键操作</span></h2><p><strong><span>视角的控制</span></strong></p><ul><li><p><span>旋转视角：鼠标中健按住可旋转</span></p></li><li><p><span>平移视角：shift+鼠标中健</span></p></li><li><p><span>推进推远视角：滚动鼠标中健</span></p></li></ul><p><strong><span>物体的控制</span></strong></p><ul><li><p><span>移动物体：G</span></p></li><li><p><span>旋转物体：R</span></p></li><li><p><span>缩放物体：S</span></p></li><li><p><span>恢复变换：Alt+G，Alt+R，Alt+S</span></p></li><li><p><span>新建物体：Shift+A</span></p></li><li><p><span>复制物体：Shift+D</span></p></li><li><p><span>删除物体：X或者Delete</span></p></li><li><p><span>隐藏物体：H</span></p></li><li><p><span>显示隐藏物体：Alt+H</span></p></li><li><p><span>隐藏没有被选中的物体：Shift+H</span></p></li><li><p><span>选择物体刷选：C全选：A</span></p></li><li><p><span>按住Shift可以加选或者减选</span></p></li></ul><p><strong><span>视图的切换</span></strong><span>（小键盘）</span></p><ul><li><p><span>7 -顶视图，ctrl+7底视图</span></p></li><li><p><span>1 -前视图，ctrl+1后视图</span></p></li><li><p><span>3-右视图，ctrl+3 左视图</span></p></li><li><p><span>9反转当前视图</span></p></li><li><p><span>0：切换摄像机的视角</span></p></li><li><p><span>5：切换透视投影和正交投影</span></p></li><li><p><span>2,4,6,8：前后左右角度微调</span></p></li><li><p><span>+，-：缩放微调</span></p></li></ul><p><strong><span>快捷键操作</span></strong></p><figure class='table-figure'><table><thead><tr><th style='text-align:left;' ><span>快捷键</span></th><th style='text-align:left;' ><span>操作</span></th></tr></thead><tbody><tr><td style='text-align:left;' ><strong><span>菜单调用</span></strong></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>N</span></td><td style='text-align:left;' ><span>对象属性边栏</span></td></tr><tr><td style='text-align:left;' ><span>T</span></td><td style='text-align:left;' ><span>切换工具栏</span></td></tr><tr><td style='text-align:left;' ><span>Q</span></td><td style='text-align:left;' ><span>快速收藏夹菜单</span></td></tr><tr><td style='text-align:left;' ><span>F3</span></td><td style='text-align:left;' ><span>功能搜索</span></td></tr><tr><td style='text-align:left;' ><span>Ctrl + Tab</span></td><td style='text-align:left;' ><span>转盘饼图菜单</span></td></tr><tr><td style='text-align:left;' ><span>~</span></td><td style='text-align:left;' ><span>视口饼图菜单</span></td></tr><tr><td style='text-align:left;' ><span>.</span></td><td style='text-align:left;' ><span>轴心点饼图菜单</span></td></tr><tr><td style='text-align:left;' ><span>,</span></td><td style='text-align:left;' ><span>轴方向饼图菜单</span></td></tr><tr><td style='text-align:left;' ><span>Shift + S</span></td><td style='text-align:left;' ><span>快照饼图菜单</span></td></tr><tr><td style='text-align:left;' ><strong><span>视口</span></strong></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>Home</span></td><td style='text-align:left;' ><span>显示所有对象</span></td></tr><tr><td style='text-align:left;' ><span>H</span></td><td style='text-align:left;' ><span>隐藏对象</span></td></tr><tr><td style='text-align:left;' ><span>Alt + H</span></td><td style='text-align:left;' ><span>取消隐藏所有对象</span></td></tr><tr><td style='text-align:left;' ><span>Shift + H</span></td><td style='text-align:left;' ><span>隐藏所有未选择的对象</span></td></tr><tr><td style='text-align:left;' ><span>Alt + Z</span></td><td style='text-align:left;' ><span>切换 X-ray 视角</span></td></tr><tr><td style='text-align:left;' ><span>Z</span></td><td style='text-align:left;' ><span>视口着色选项饼图菜单</span></td></tr><tr><td style='text-align:left;' ><span>/</span></td><td style='text-align:left;' ><span>隔离所选对象</span></td></tr><tr><td style='text-align:left;' ><span>数字键 0</span></td><td style='text-align:left;' ><span>相机视图</span></td></tr><tr><td style='text-align:left;' ><span>数字键 1</span></td><td style='text-align:left;' ><span>正视图</span></td></tr><tr><td style='text-align:left;' ><span>数字键 2</span></td><td style='text-align:left;' ><span>下视图</span></td></tr><tr><td style='text-align:left;' ><span>数字键 3</span></td><td style='text-align:left;' ><span>侧视图</span></td></tr><tr><td style='text-align:left;' ><span>数字键 4</span></td><td style='text-align:left;' ><span>左视图</span></td></tr><tr><td style='text-align:left;' ><span>数字键 6</span></td><td style='text-align:left;' ><span>右视图</span></td></tr><tr><td style='text-align:left;' ><span>数字键 7</span></td><td style='text-align:left;' ><span>顶视图</span></td></tr><tr><td style='text-align:left;' ><span>数字键 8</span></td><td style='text-align:left;' ><span>上视图</span></td></tr><tr><td style='text-align:left;' ><span>数字键 9</span></td><td style='text-align:left;' ><span>与当前视图相反</span></td></tr><tr><td style='text-align:left;' ><span>数字键 5</span></td><td style='text-align:left;' ><span>切换透视/正交视图</span></td></tr><tr><td style='text-align:left;' ><strong><span>视口导航</span></strong></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>中键+拖动</span></td><td style='text-align:left;' ><span>轨道视图</span></td></tr><tr><td style='text-align:left;' ><span>Shift + 中键 + 拖动</span></td><td style='text-align:left;' ><span>平移视图</span></td></tr><tr><td style='text-align:left;' ><span>滚轮; Ctrl + 中键 + 拖动</span></td><td style='text-align:left;' ><span>缩放视图</span></td></tr><tr><td style='text-align:left;' ><span>Shift + ~ + 移动鼠标； 在视口中单击以停用</span></td><td style='text-align:left;' ><span>按光标自由平移</span></td></tr><tr><td style='text-align:left;' ><strong><span>对象模式</span></strong></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>Tab</span></td><td style='text-align:left;' ><span>在对象模式和编辑模式之间切换</span></td></tr><tr><td style='text-align:left;' ><span>Shift + A</span></td><td style='text-align:left;' ><span>添加新对象</span></td></tr><tr><td style='text-align:left;' ><span>Shift + Tab</span></td><td style='text-align:left;' ><span>切换捕捉</span></td></tr><tr><td style='text-align:left;' ><span>Ctrl + A</span></td><td style='text-align:left;' ><span>应用变换</span></td></tr><tr><td style='text-align:left;' ><span>Alt + G</span></td><td style='text-align:left;' ><span>清除位置</span></td></tr><tr><td style='text-align:left;' ><span>Alt + R</span></td><td style='text-align:left;' ><span>清除旋转</span></td></tr><tr><td style='text-align:left;' ><span>Alt + R</span></td><td style='text-align:left;' ><span>清除缩放</span></td></tr><tr><td style='text-align:left;' ><span>Ctrl + J</span></td><td style='text-align:left;' ><span>加入所选对象</span></td></tr><tr><td style='text-align:left;' ><span>Ctrl + 1, 2, 3, 4, etc</span></td><td style='text-align:left;' ><span>添加子集</span></td></tr><tr><td style='text-align:left;' ><span>Shift + C</span></td><td style='text-align:left;' ><span>重置为 3D 光标到中心</span></td></tr><tr><td style='text-align:left;' ><strong><span>对象操作</span></strong></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>G</span></td><td style='text-align:left;' ><span>移动对象或几何体</span></td></tr><tr><td style='text-align:left;' ><span>S</span></td><td style='text-align:left;' ><span>缩放对象或几何体</span></td></tr><tr><td style='text-align:left;' ><span>R</span></td><td style='text-align:left;' ><span>旋转对象或几何体</span></td></tr><tr><td style='text-align:left;' ><span>RR</span></td><td style='text-align:left;' ><span>用轨迹球旋转</span></td></tr><tr><td style='text-align:left;' ><span>G, S, 或 R + X, Y, 或 Z</span></td><td style='text-align:left;' ><span>沿轴动作</span></td></tr><tr><td style='text-align:left;' ><span>G, S, 或 R + XX, YY, 或 ZZ</span></td><td style='text-align:left;' ><span>沿局部轴的动作</span></td></tr><tr><td style='text-align:left;' ><span>变形时按住 Shift</span></td><td style='text-align:left;' ><span>微调控制</span></td></tr><tr><td style='text-align:left;' ><span>变形时按住 Ctrl</span></td><td style='text-align:left;' ><span>通过增量调整值</span></td></tr><tr><td style='text-align:left;' ><span>Shift + D</span></td><td style='text-align:left;' ><span>重复对象</span></td></tr><tr><td style='text-align:left;' ><span>Alt + D</span></td><td style='text-align:left;' ><span>复制链接对象</span></td></tr><tr><td style='text-align:left;' ><span>M</span></td><td style='text-align:left;' ><span>向新集合添加活动对象</span></td></tr><tr><td style='text-align:left;' ><strong><span>编辑模式</span></strong></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>1</span></td><td style='text-align:left;' ><span>顶点模式</span></td></tr><tr><td style='text-align:left;' ><span>2</span></td><td style='text-align:left;' ><span>边缘模式</span></td></tr><tr><td style='text-align:left;' ><span>3</span></td><td style='text-align:left;' ><span>面模式</span></td></tr><tr><td style='text-align:left;' ><span>P</span></td><td style='text-align:left;' ><span>从选择中创建单独的对象</span></td></tr><tr><td style='text-align:left;' ><span>M</span></td><td style='text-align:left;' ><span>合并选择</span></td></tr><tr><td style='text-align:left;' ><span>GG</span></td><td style='text-align:left;' ><span>顶点和边缘滑动</span></td></tr><tr><td style='text-align:left;' ><span>E</span></td><td style='text-align:left;' ><span>挤出几何体</span></td></tr><tr><td style='text-align:left;' ><span>F</span></td><td style='text-align:left;' ><span>填充面</span></td></tr><tr><td style='text-align:left;' ><span>Ctrl + R</span></td><td style='text-align:left;' ><span>循环剪裁</span></td></tr><tr><td style='text-align:left;' ><span>Ctrl + R 后滚轮； 移动鼠标选择方向</span></td><td style='text-align:left;' ><span>添加循环剪切分割</span></td></tr><tr><td style='text-align:left;' ><span>左键单击</span></td><td style='text-align:left;' ><span>锁定循环切割</span></td></tr><tr><td style='text-align:left;' ><span>I</span></td><td style='text-align:left;' ><span>将插入面添加到选区</span></td></tr><tr><td style='text-align:left;' ><span>Ctrl + B</span></td><td style='text-align:left;' ><span>为选择添加斜角</span></td></tr><tr><td style='text-align:left;' ><span>Ctrl + Shift + B</span></td><td style='text-align:left;' ><span>将顶点斜角添加到选择</span></td></tr><tr><td style='text-align:left;' ><span>K</span></td><td style='text-align:left;' ><span>刀</span></td></tr><tr><td style='text-align:left;' ><span>Enter</span></td><td style='text-align:left;' ><span>锁定刀</span></td></tr><tr><td style='text-align:left;' ><span>Shift + W</span></td><td style='text-align:left;' ><span>弯曲</span></td></tr><tr><td style='text-align:left;' ><span>Y</span></td><td style='text-align:left;' ><span>拆分几何体</span></td></tr><tr><td style='text-align:left;' ><span>V</span></td><td style='text-align:left;' ><span>分裂几何体</span></td></tr><tr><td style='text-align:left;' ><span>Alt + V</span></td><td style='text-align:left;' ><span>填充分裂</span></td></tr><tr><td style='text-align:left;' ><span>Ctrl + L</span></td><td style='text-align:left;' ><span>选择连接几何体</span></td></tr><tr><td style='text-align:left;' ><span>Alt + Left click</span></td><td style='text-align:left;' ><span>选择边缘循环</span></td></tr><tr><td style='text-align:left;' ><span>O</span></td><td style='text-align:left;' ><span>切换比例编辑</span></td></tr><tr><td style='text-align:left;' ><span>Shift + O</span></td><td style='text-align:left;' ><span>切换按比例编辑衰减配置文件</span></td></tr><tr><td style='text-align:left;' ><span>Shift + N</span></td><td style='text-align:left;' ><span>重新计算法线</span></td></tr><tr><td style='text-align:left;' ><span>Ctrl + Shift + N</span></td><td style='text-align:left;' ><span>反转法线</span></td></tr><tr><td style='text-align:left;' ><span>Esc</span></td><td style='text-align:left;' ><span>取消正在进行的转换</span></td></tr><tr><td style='text-align:left;' ><strong><span>雕刻模式</span></strong></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>Shift + Spacebar</span></td><td style='text-align:left;' ><span>选择画笔热键</span></td></tr><tr><td style='text-align:left;' ><span>E</span></td><td style='text-align:left;' ><span>选择描边方案</span></td></tr><tr><td style='text-align:left;' ><span>F</span></td><td style='text-align:left;' ><span>画笔大小</span></td></tr><tr><td style='text-align:left;' ><span>Shift + F</span></td><td style='text-align:left;' ><span>画笔强度</span></td></tr><tr><td style='text-align:left;' ><span>Ctrl + F</span></td><td style='text-align:left;' ><span>画笔角度</span></td></tr><tr><td style='text-align:left;' ><span>Shift + 左键单击</span></td><td style='text-align:left;' ><span>切换画笔正面或负面</span></td></tr><tr><td style='text-align:left;' ><strong><span>UV 和 UV 展开</span></strong></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>Ctrl + E</span></td><td style='text-align:left;' ><span>标记接缝</span></td></tr><tr><td style='text-align:left;' ><span>U</span></td><td style='text-align:left;' ><span>展开网格</span></td></tr><tr><td style='text-align:left;' ><strong><span>UV 编辑器</span></strong></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>Ctrl + L; L 选择光标下的对象</span></td><td style='text-align:left;' ><span>选择岛屿</span></td></tr><tr><td style='text-align:left;' ><span>P</span></td><td style='text-align:left;' ><span>固定</span></td></tr><tr><td style='text-align:left;' ><span>Alt + P</span></td><td style='text-align:left;' ><span>取消固定</span></td></tr><tr><td style='text-align:left;' ><span>Shift + P</span></td><td style='text-align:left;' ><span>选择已固定</span></td></tr><tr><td style='text-align:left;' ><span>V</span></td><td style='text-align:left;' ><span>缝合</span></td></tr><tr><td style='text-align:left;' ><span>Shift + W</span></td><td style='text-align:left;' ><span>焊接</span></td></tr><tr><td style='text-align:left;' ><strong><span>节点</span></strong></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>Shift + A</span></td><td style='text-align:left;' ><span>创建新节点</span></td></tr><tr><td style='text-align:left;' ><span>Ctrl + 右键单击 + 拖动</span></td><td style='text-align:left;' ><span>服务连接</span></td></tr><tr><td style='text-align:left;' ><span>F</span></td><td style='text-align:left;' ><span>连接已选择</span></td></tr><tr><td style='text-align:left;' ><span>M</span></td><td style='text-align:left;' ><span>已选择静音</span></td></tr><tr><td style='text-align:left;' ><span>Ctrl + G</span></td><td style='text-align:left;' ><span>已选择组</span></td></tr><tr><td style='text-align:left;' ><span>Ctrl + Alt + G</span></td><td style='text-align:left;' ><span>取消已选择组</span></td></tr></tbody></table></figure><p>&nbsp;</p><h2 id='物体控制'><span>物体控制</span></h2><h2 id='软件页面介绍'><span>软件页面介绍</span></h2><p><span>Blender窗口特性</span></p><ol start='' ><li><p><span>可替换</span></p></li><li><p><span>可拆分</span></p></li></ol><p>&nbsp;</p><p><strong><span>游标</span></strong></p><p><span>物体中键红白相间的圆圈</span></p><p><img src="./Blender.assets/image-20250225232441001.png" alt="image-20250225232441001"></p><ul><li><p><span>游标出现在哪里，新建物体就在那里</span>
+<span>shift+右键，可以快速移动游标位置</span>
+<span>shift+C，可以恢复游标到中心</span></p></li><li><p><span>游标可以作为一个轴心点使用</span></p></li></ul><p>&nbsp;</p><p><strong><span>原点</span></strong></p><p><span>物体上的黄点就是这个物体的中心点</span></p><p><img src="./Blender.assets/image-20250225233015935.png" alt="image-20250225233015935"></p><p><span>每个物体都有原点，在3D世界的计算机眼里，原点就是储存物体信息的数据点。</span></p><p><strong><span>快捷键</span></strong></p><ul><li><p><span>调用游标Pie目录：Shift+s</span></p></li><li><p><span>游标恢复到世界中心：Shift+c</span></p></li><li><p><span>移动游标：游标工具或者Shift+右键</span></p></li><li><p><span>最大化窗口：Ctrl+空格</span></p></li><li><p><span>G移动状态下，按住ctrl，可以以每个</span></p></li><li><p><span>方格增量为单位进行吸附。</span></p></li><li><p><span>切换全局和局部坐标系：在G移动状态下按两次X，Y，Z,</span></p></li></ul><p>&nbsp;</p><h2 id='案例珍珠耳环少女'><span>案例：珍珠耳环少女</span></h2><p><strong><span>效果图</span></strong></p><p><img src="./Blender.assets/1-1740498304781-2.png" alt="1"></p><p><strong><span>操作步骤</span></strong></p><ul><li><p><span>添加参考图</span></p><ol start='' ><li><p><code>小键盘1</code><span>切换到正视图</span></p></li><li><p><code>shift+A</code><span>--&gt;新建--&gt;图像--&gt;参考</span>
+<img src="./Blender.assets/image-20250225235135411.png" alt="image-20250225235135411"></p></li><li><p><span>调低物体不透明度，避免对建模造成干扰</span>
+<img src="./Blender.assets/image-20250225235433489.png" alt="image-20250225235433489"></p><p>&nbsp;</p></li></ol></li><li><p><span>搭建模型</span>
+<span>使用基础物体，搭建人物模型</span>
+<img src="./Blender.assets/image-20250226125537665.png" alt="image-20250226125537665"></p></li><li><p><span>调整摄像机机位</span>
+<span>点击摄像机按钮或按0键可以进入摄像机视图</span>
+<img src="./Blender.assets/image-20250226125819888.png" alt="image-20250226125819888">
+<span>可以使用S,G,R将摄像机图层调整到合适的角度，但这种调整方式非常麻烦。</span></p><p><span>可以使用以下方法快速调整</span></p><ul><li><p><span>进入摄像机视图</span></p></li><li><p><span>按N键，打开摄像机菜单</span></p></li><li><p><span>选择视图，开启锁定摄像机到方位视图</span><img src="./Blender.assets/image-20250226130520566.png" alt="image-20250226130520566"></p></li><li><p><span>再拖到画面到合适的位置。</span></p></li></ul></li><li><p><span>渲染输出设置</span>
+<span>Blender中内置了两个渲染器：EEVEE和CYCLES</span>
+<img src="./Blender.assets/image-20250226131323334.png" alt="image-20250226131323334"><span>选择渲染器，默认为EV</span></p><p><span>按</span><code>F12</code><span>可以打开渲染</span></p><p><span>EEVEE和CYCLES的区别</span></p><figure class='table-figure'><table><thead><tr><th><span>渲染器</span></th><th><span>优点</span></th><th><span>缺点</span></th></tr></thead><tbody><tr><td><span>EEVEE</span></td><td><span>快，</span><br/><span>相对不占资源</span></td><td><span>没有光线追踪，</span><br/><span>很多光线阴影的细节不佳，</span><br/><span>需要额外更多参数设置辅助。</span></td></tr><tr><td><span>CYCLES</span></td><td><span>逼真，高级，</span><br/><span>能模拟出物理世界里</span><br/><span>非常细节的光线阴影</span></td><td><span>慢，</span><br/><span>相对更消耗硬件资源</span></td></tr></tbody></table></figure><p>&nbsp;</p></li><li><p><span>四种视图浏览方式</span>
+<img src="./Blender.assets/image-20250226132121989.png" alt="image-20250226132121989"></p><ol start='' ><li><p><span>线框模式预览</span>
+<span>可以显示内部和背面的走线</span>
+<span>建模时候常用</span></p></li><li><p><span>实体模式预览</span>
+<span>不显示颜色和材质</span>
+<span>建模时候使用，快，不占太多资源</span></p></li><li><p><span>材质预览</span>
+<span>可以预览材质的颜色和简单纹理</span>
+<span>但是不计算光线追踪细节，比渲染预览快</span></p></li><li><p><span>渲染预览</span>
+<span>显示最终渲染结果预览</span>
+<span>但是相对占资源，慢</span></p></li></ol></li><li><p><span>布光</span>
+<span>调整添加灯光图层，调整灯光的</span><code>半径</code><span>，</span><code>功率</code><span>，</span><code>位置</code><span>等参数以达到合适的效果</span></p><p><span>平滑模型：选择模型，右键选择</span><code>平滑着色</code>
+<span>对于矩形如果不想进行平滑处理，可以在修改器中添加</span><code>法向</code>
+<img src="./Blender.assets/image-20250226133434226.png" alt="image-20250226133434226">
+<img src="./Blender.assets/image-20250226134817390.png" alt="image-20250226134817390"></p></li><li><p><span>添加材质</span></p><p><span>选择添加材质的物体，将其设为平滑着色，在右侧工具栏点击材质，再新建材质即可。</span><img src="./Blender.assets/image-20250226140035811.png" alt="image-20250226140035811">
+<img src="./Blender.assets/image-20250226141122672.png" alt="image-20250226141122672"></p></li></ul><p>&nbsp;</p><p>&nbsp;</p><h1 id='建模操作'><span>建模操作</span></h1><h2 id='点线面的选择与控制'><span>点线面的选择与控制</span></h2><ul><li><p><span>编辑模式切换</span></p><ol start='' ><li><p><span>选择编辑的物体，按Tab进入编辑模式，再次按Tab可以退出编辑模式</span></p></li><li><p><span>在偏好设置中的</span><strong><span>键位映射</span></strong><span>打开</span><strong><span>拖动激活饼菜单</span></strong><span>，在按住</span><code>tab</code><span>，拖动鼠标，便可以在多种模式中快速切换</span>
+<img src="./Blender.assets/image-20250226143008810.png" alt="image-20250226143008810">
+<strong><img src="./Blender.assets/image-20250226143032492.png" alt="image-20250226143032492"></strong></p></li></ol></li><li><p><span>点线面的切换</span></p><p><span>默认选择的时</span><code>点模式</code><img src="./Blender.assets/image-20250226143231775.png" alt="image-20250226143231775">
+<span>可以使用快捷键1，2，3在三种模式之间快速切换。</span>
+<span>按住shift+1,2,3可以同时选择两种或三种模式。</span></p></li><li><p><span>点线面的选择</span>
+<span>在对应的点线面模式下，可以对点线面进行选择。</span></p><ul><li><p><span>进入了点线面上的快捷键设置有，多选（shift+鼠标左键），反选（ctrl+i），</span></p></li><li><p><span>如果很费力地用鼠标去选，还有别的方法，按住w键，可以选择框选，刷选，套索选择。</span></p></li><li><p><span>长按ctrl+鼠标左键，打开循环选择</span></p></li><li><p><span>按住ctrl+alt,鼠标双击， 在 </span><strong><span>线</span></strong><span> 这一模式下， 可以出现垂直这一圈的线。花瓶、罗马柱用得到。</span></p></li><li><p><span>alt+z,切换至透视模式. </span></p></li></ul></li><li><p><span>点线面的控制</span>
+<span>G移动、S放大/缩小、R旋转</span></p></li><li><p><span>点线面的删除</span></p><p><span>选中物体，X删除, 试了下删除边、面和顶点。</span></p></li><li><p><span>法向和法线</span>
+<span>法向：可以理解为区别一个面的正反</span></p><p><span>在显示叠加层中开启</span><code>面朝向</code><span>，蓝色为面的正面，红色为面的反面。</span>
+<img src="./Blender.assets/image-20250226144754157.png" alt="image-20250226144754157"><span>法线：该面的垂线，代表该面的朝向。</span>
+<img src="./Blender.assets/image-20250226145253711.png" alt="image-20250226145253711"></p></li></ul><p><strong><span>总结</span></strong><img src="./Blender.assets/image-20250226145359304.png" alt="image-20250226145359304"></p><h2 id='十大模型操作'><span>十大模型操作</span></h2><p><span>基础操作：移动、旋转、缩放</span></p><p><span>十大建模操作</span></p><p><img src="./Blender.assets/image-20250226150452329.png" alt="image-20250226150452329"></p><ol start='' ><li><p><span>挤出</span></p></li><li><p><span>向内挤出</span></p></li><li><p><span>倒角</span></p></li><li><p><span>循环切割</span></p></li><li><p><span>合并</span>
+<span>快捷键</span><code>M</code>
+<img src="./Blender.assets/image-20250226153516686.png" alt="image-20250226153516686"><img src="./Blender.assets/image-20250226153559505.png" alt="image-20250226153559505"></p></li><li><p><span>断开</span>
+<span>快捷键</span><code>V</code>
+<img src="./Blender.assets/image-20250226153438302.png" alt="image-20250226153438302"></p></li><li><p><span>填充</span>
+<span>选择边界，按</span><code>F</code><span>快速填充</span>
+<img src="./Blender.assets/image-20250226153348689.png" alt="image-20250226153348689">
+<img src="./Blender.assets/image-20250226153402315.png" alt="image-20250226153402315"></p></li><li><p><span>切刀</span>
+<span>快捷键K</span>
+<img src="./Blender.assets/image-20250226153322182.png" alt="image-20250226153322182"></p></li><li><p><span>桥接</span>
+<span>桥接是，两个模型必须为一个物体</span></p><ul><li><p><span>首先在物体模式下，选择两个物体，使用</span><code>ctrl+J</code><span>将两个物体进行合并。</span></p></li><li><p><span>删除两个物体之间的面，</span><code>alt（+shift）+左键</code><span>选择对应的两个循环边</span></p></li><li><p><code>ctrl+e</code>
+<img src="./Blender.assets/image-20250226152921859.png" alt="image-20250226152921859">
+<img src="./Blender.assets/image-20250226152938639.png" alt="image-20250226152938639"></p></li></ul></li><li><p><span>分离</span>
+<span>快捷键P</span>
+<span>选择需要分离的物体，按P。</span>
+<img src="./Blender.assets/image-20250226153225357.png" alt="image-20250226153225357"></p></li></ol><p>&nbsp;</p><p><strong><span>总结</span></strong></p><p><img src="./Blender.assets/image-20250226153644870.png" alt="image-20250226153644870"></p><p>&nbsp;</p><h2 id='修改器'><span>修改器</span></h2><p><span>修改器是一种非破坏性的修改方式。不会改变基础模型，便于修改和还原模型。</span></p><p><span>最常用的修改器</span></p><ul><li><p><span>表面细分</span></p></li><li><p><span>实体化</span></p></li><li><p><span>倒角修改器</span></p></li><li><p><span>布尔修改器</span></p></li></ul><p><span>添加修改器</span>
+<img src="./Blender.assets/image-20250226154730791.png" alt="image-20250226154730791"></p><p>&nbsp;</p><p><strong><span>使用修改器制作螺母</span></strong></p><ol start='' ><li><p><span>新建一个圆环，边数6，填充，添加实体化修改器</span></p></li><li><p><span>添加一个主体放置在螺母中心，为螺母添加倒角修改器，隐藏柱体。</span></p></li><li><p><span>添加倒角修改器</span></p></li></ol><p><img src="./Blender.assets/image-20250226155145059.png" alt="image-20250226155145059"></p><p><strong><span>使用修改器建模的优势</span></strong></p><ol start='' ><li><p><span>建模快，效率高</span>
+<span>能快速直观地实现一个效果</span></p></li><li><p><span>非破坏性</span>
+<span>在不改变原来模型的基础上，</span>
+<span>可以很精确地控制参数</span></p></li><li><p><span>灵活，可重复使用</span>
+<span>可叠加多个效果</span></p></li></ol><h2 id='案例物体建模'><span>案例：物体建模</span></h2><p><span>需要的模型：</span><img src="./Blender.assets/image-20250226161035649.png" alt="image-20250226161035649"></p><h3 id='模型①螺母'><strong><span>模型①螺母</span></strong></h3><p><span>参考</span><strong><span>修改器</span></strong><span>章节的螺母模型</span></p><p>&nbsp;</p><h3 id='模型②蘑菇'><strong><span>模型②蘑菇</span></strong></h3><p><span>用到的工具：简易形变，吸附</span></p><ol start='' ><li><p><span>创建一个立方体，添加</span><code>表面细分</code><span>修改器</span><img src="./Blender.assets/image-20250226200756725.png" alt="image-20250226200756725"></p></li><li><p><span>按</span><code>Tab</code><span>进入编辑模式，</span><code>小键盘1</code><span>进入前视图，</span><code>ALT+Z</code><span>进入透视模式，选择下方的四个边，使用缩放工具放大。</span><code>Ctrl+R</code><span>循环切割</span>
+<img src="./Blender.assets/image-20250226201443190.png" alt="image-20250226201443190"></p></li><li><p><span>将底面执行两次向内挤出操作</span>
+<img src="./Blender.assets/image-20250226201605095.png" alt="image-20250226201605095"></p></li><li><p><span>选择最中心的矩形，按</span><code>G</code><span>向上移动。</span>
+<img src="./Blender.assets/image-20250226201703928.png" alt="image-20250226201703928"></p></li><li><p><code>CTRL+R</code><span>在箭头所示位置进行一次环形切割，在进行一次向内缩放</span>
+<img src="./Blender.assets/image-20250226201909140.png" alt="image-20250226201909140"></p></li><li><p><span>根据需要，细微调整各个线的位置和缩放。调到满意的样式即可。</span></p><p><img src="./Blender.assets/image-20250226202155308.png" alt="image-20250226202155308"></p></li><li><p><span>新建一个柱体作为蘑菇杆，12个顶点，再添加一个</span><code>表面细分</code><span>修改器</span>
+<img src="./Blender.assets/image-20250226202608132.png" alt="image-20250226202608132"></p></li><li><p><span>进入</span><code>编辑模式</code><span>，上下添加两条环切</span>
+<img src="./Blender.assets/image-20250226202710459.png" alt="image-20250226202710459"></p></li><li><p><span>调整上下的面，调整至上小下大的样子</span><img src="./Blender.assets/image-20250226202912410.png" alt="image-20250226202912410"></p></li><li><p><span>微调蘑菇底部细节</span>
+<img src="./Blender.assets/image-20250226203137073.png" alt="image-20250226203137073"></p></li><li><p><span>掰弯蘑菇杆：选择蘑菇杆，添加</span><code>简易形变</code><span>修改器</span>
+<img src="./Blender.assets/image-20250226203622980.png" alt="image-20250226203622980">
+<img src="./Blender.assets/image-20250226203749673.png" alt="image-20250226203749673">
+<img src="./Blender.assets/image-20250226210407452.png" alt="image-20250226210407452"></p></li><li><p><span>将蘑菇顶和蘑菇杆进行组装</span>
+<img src="./Blender.assets/image-20250226203319432.png" alt="image-20250226203319432"></p></li><li><p><span>蘑菇上的小点点制作</span>
+<span>创建一个立方体，添加表面细分修改器，迭代次数为2</span>
+<img src="./Blender.assets/image-20250226220106245.png" alt="image-20250226220106245"></p></li><li><p><span>将物体压扁，进行一次环切</span>
+<span>将物体的上面缩小</span>
+<img src="./Blender.assets/image-20250226220431305.png" alt="image-20250226220431305"></p></li><li><p><span>退出编辑模式，添加平滑着色，调整细分渲染次数。使得模型平滑即可</span>
+<img src="./Blender.assets/image-20250226220832870.png" alt="image-20250226220832870"></p></li><li><p><span>将蘑菇上的小点点添加到蘑菇顶上：面吸附操作</span>
+<span>打开屏幕上方菜单中的小磁铁图表，在右侧菜单中选择面投射，并进行以下设置</span>
+<img src="./Blender.assets/image-20250226222032637.png" alt="image-20250226222032637"></p></li><li><p><code>shift+D</code><span>复制小圆点并进行拖动，复制多个添加到蘑菇顶部</span>
+<img src="./Blender.assets/image-20250226222303547.png" alt="image-20250226222303547"></p></li><li><p><span>效果预览</span>
+<img src="./Blender.assets/image-20250226222607802.png" alt="image-20250226222607802"></p></li></ol><p>&nbsp;</p><p><strong><span>注意！注意！注意！</span></strong><span>重要的事情说三遍</span></p><ol start='' ><li><p><span>尽量不要在物体模式下缩放，尽量在编辑模式下缩放·</span></p></li><li><p><span>假如你在物体模式下做过缩放；记得应用下这个缩放。</span></p></li></ol><p><span>如果在物体模式下进行了缩放，使用</span><code>CTRL+A</code><span>进行应用缩放</span></p><p>&nbsp;</p><p>&nbsp;</p><h3 id='模型③树桩'><strong><span>模型③树桩</span></strong></h3><p><span>工具：衰减，分离，拉平</span></p><ol start='' ><li><p><span>新建一个圆柱体，细分：12，调整至合适的高度，进入编辑模式，将其环切5份</span>
+<img src="./Blender.assets/image-20250226223443019.png" alt="image-20250226223443019"></p></li><li><p><span>选择最下面的边，放大。</span>
+<span>选择顶部的一个面，</span><code>I</code><span>向内插入一次，再</span><code>E</code><span>向内挤出一次</span>
+<img src="./Blender.assets/image-20250226223802998.png" alt="image-20250226223802998"></p></li><li><p><span>选择侧面的四个面，</span><code>i</code><span>插入一次，调整成正方形</span>
+<span>安装</span><code>LoopTools</code><span>插件，使用该插件将插入的四个面变成圆环。</span>
+<span>将圆环挤出，成为树桩的枝丫</span>
+<img src="./Blender.assets/image-20250226224936469.png" alt="image-20250226224936469"></p></li><li><p><span>添加一个表面细分调整边缘，再适当位置添加环切，保证过渡光滑</span>
+<img src="./Blender.assets/image-20250226231309052.png" alt="image-20250226231309052"></p></li><li><p><span>挤出树桩的根系</span>
+<img src="./Blender.assets/image-20250226231720256.png" alt="image-20250226231720256">
+<span>可以使用衰减编辑调整挤出</span>
+<img src="./Blender.assets/image-20250226231828064.png" alt="image-20250226231828064"></p></li><li><p><span>调整底部点水平</span>
+<span>挤出后，底部的点不在同一平面，选择底部所有点，按</span><code>S,Z,0</code><span>即可对齐底部所有点</span>
+<img src="./Blender.assets/image-20250226232054178.png" alt="image-20250226232054178">
+<img src="./Blender.assets/image-20250226232226034.png" alt="image-20250226232226034"></p></li><li><p><span>树桩制作完成，退出编辑模式，右键选择平滑着色</span>
+<span>将修改器应用到模型</span>
+<img src="./Blender.assets/image-20250226232430611.png" alt="image-20250226232430611"></p></li><li><p><span>苔藓制作</span>
+<span>选择树桩，进入编辑模式，选择最上方的点，</span><code>shift+d</code><span>，右键撤销移动，按</span><code>P</code><span>分离。分离</span><code>选中项</code>
+<img src="./Blender.assets/image-20250226232900742.png" alt="image-20250226232900742"></p></li><li><p><span>选择分离出的物体，添加</span><code>实体化</code><span>修改器，调整厚度</span>
+<img src="./Blender.assets/image-20250226233616540.png" alt="image-20250226233616540"></p></li><li><p><span>调整树上方模型底部的点，向下拖动成不规则的形式。可以使用衰减工具，使得过度更加自然。</span>
+<span>  完成后再添加一个</span><code>表面细分</code><span>修改器</span>
+<span>  </span><img src="./Blender.assets/image-20250226234626207.png" alt="image-20250226234626207"></p></li><li><p><span>渲染效果</span>
+<img src="./Blender.assets/image-20250226234614437.png" alt="image-20250226234614437"></p></li></ol><p>&nbsp;</p><h3 id='模型④花朵'><strong><span>模型④花朵</span></strong></h3><p><span>工具：旋绕工具</span></p><ol start='' ><li><p><span>将游标还原到世界中心</span><code>shift+c</code><span>，并创建一个平面。</span><code>Tab</code><span>进入编辑模式，</span><code>7</code><span>切换顶视图，</span><code>CTRL+R</code><span>切两刀</span>
+<img src="./Blender.assets/image-20250227104909128.png" alt="image-20250227104909128"></p></li><li><p><code>A</code><span>全选，</span><code>S</code><span>向Y轴方向拉扁，并添加</span><code>表面细分</code><span>修改器</span>
+<img src="./Blender.assets/image-20250227105126288.png" alt="image-20250227105126288"></p></li><li><p><span>适当调整图形，成为一朵花瓣的形状</span>
+<img src="./Blender.assets/image-20250227105240280.png" alt="image-20250227105240280"></p></li><li><p><code>A</code><span>全选</span><code>G,X</code><span>让其沿X周移动，使得原点再花瓣的尖位置</span>
+<img src="./Blender.assets/image-20250227105519482.png" alt="image-20250227105519482"></p></li><li><p><span>全选花瓣，使用环绕工具绕着Z轴复制花瓣，形成一朵花，微调一定角度，使花瓣向上翘</span></p><p><img src="./Blender.assets/image-20250227110006210.png" alt="image-20250227110006210"></p></li><li><p><span>在表面细分上方添加一个</span><code>实体化</code><span>修改器，让花瓣有一定的厚度，注意将原点调整到花的底部</span>
+<img src="./Blender.assets/image-20250227110646411.png" alt="image-20250227110646411"></p></li><li><p><span>新建一个12边的圆柱体，做花蕊，进入编辑模式，环切为三份。调整圆柱体上下的大小，完成后加一个表面细分修改器</span>
+<img src="./Blender.assets/image-20250227111342243.png" alt="image-20250227111342243"></p></li></ol><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h3 id='模型⑤龟背竹'><strong><span>模型⑤龟背竹</span></strong></h3><p><span>工具：拓扑/合并/断开/切刀</span></p><ol start='' ><li><p><span>切换到顶视图，新建一个背景参考图，适当调整不透明度。</span></p><p><img src="./Blender.assets/image-20250227165313508.png" alt="image-20250227165313508"></p></li><li><p><span>新建一个平面,进行点，边挤出，覆盖到叶片</span>
+<img src="./Blender.assets/image-20250227175109697.png" alt="image-20250227175109697"></p></li><li><p><span>扣除叶片上的洞</span>
+<img src="./Blender.assets/image-20250227175333661.png" alt="image-20250227175333661"></p></li><li><p><span>添加表面细分和实体化修改器</span></p><p><img src="./Blender.assets/image-20250227175957372.png" alt="image-20250227175957372"></p></li><li><p><span>效果渲染</span>
+<img src="./Blender.assets/image-20250227180031082.png" alt="image-20250227180031082">
+<img src="./Blender.assets/image-20250227181833648.png" alt="image-20250227181833648"></p></li></ol><p>&nbsp;</p><h3 id='模型⑥树干'><strong><span>模型⑥树干</span></strong></h3><p><span>工具：缩裹修改器</span></p><ol start='' ><li><p><span>新建一个圆柱体，细分修改为10。将其放倒。</span>
+<img src="./Blender.assets/image-20250227111843702.png" alt="image-20250227111843702"></p></li><li><p><span>切换到面模式，选择树干两端的面，</span><code>i</code><span>向内挤压，删掉2个面</span>
+<img src="./Blender.assets/image-20250227114050194.png" alt="image-20250227114050194">
+<img src="./Blender.assets/image-20250227114145492.png" alt="image-20250227114145492"></p></li><li><p><span>将两端的两个环，</span><code>CTRL+E</code><span>桥接在一起</span>
+<img src="./Blender.assets/image-20250227114357398.png" alt="image-20250227114357398"></p></li><li><p><code>CTRL+R</code><span>在树干中键切两道，按</span><code>S,Y</code><span>向左右两侧移动</span>
+<img src="./Blender.assets/image-20250227114711211.png" alt="image-20250227114711211"></p></li><li><p><span>选择其中一圈圆环，CTRL+B加倒角，三条线，另外一条也是一样的操作</span>
+<img src="./Blender.assets/image-20250227115044225.png" alt="image-20250227115044225"></p></li><li><p><span>选择四个矩形，向内挤压，再用LoopTools转换成圆形，加入再挤出形成树枝</span>
+<img src="./Blender.assets/image-20250227115338836.png" alt="image-20250227115338836">
+<img src="./Blender.assets/image-20250227115419111.png" alt="image-20250227115419111"></p></li><li><p><span>在树干两端和树枝顶部添加细分或倒角，使得过渡更加自然。再添加一个表面细分 修改器</span>
+<img src="./Blender.assets/image-20250227115732525.png" alt="image-20250227115732525">
+<img src="./Blender.assets/image-20250227115827451.png" alt="image-20250227115827451"></p></li><li><p><span>制作苔藓：切换到面模式。选择最上面的面，复制，取消移动，</span><code>p</code><span>分离出来</span>
+<img src="./Blender.assets/image-20250227120105645.png" alt="image-20250227120105645">
+<span>另一侧操作相同</span>
+<img src="./Blender.assets/image-20250227120123042.png" alt="image-20250227120123042"></p></li><li><p><span>添加实体化修改器，设置厚度，再添加一个表面细分修改器。</span>
+<img src="./Blender.assets/image-20250227120505958.png" alt="image-20250227120505958"></p></li><li><p><span>为苔藓添加一个</span><code>缩裹</code><span>修改器，再进行适当调整。</span>
+<img src="./Blender.assets/image-20250227121047603.png" alt="image-20250227121047603"></p></li><li><p><span>效果渲染</span>
+<img src="./Blender.assets/image-20250227121249542.png" alt="image-20250227121249542"></p></li></ol><p>&nbsp;</p><h2 id='阵列修改器与晶格形变'><span>阵列修改器与晶格形变</span></h2><p>&nbsp;</p><p><span>模型参考：</span></p><p><img src="./Blender.assets/image-20250227181950915.png" alt="image-20250227181950915"></p><p>&nbsp;</p><p><strong><span>树叶建模</span></strong><span>（棕榈树叶）</span></p><ol start='' ><li><p><span>新建一个平面，切换到顶视图，进入编辑模式，对平面进行缩放，</span><code>CTRL+R</code><span>切两刀，至下图所示：</span>
+<img src="./Blender.assets/image-20250228210604014.png" alt="image-20250228210604014"></p></li><li><p><span>添加一个细分为2的表面修改器，再添加实体化修改器，再进行平滑着色。</span>
+<img src="./Blender.assets/image-20250228211147832.png" alt="image-20250228211147832"></p></li><li><p><span>进入编辑模式，对模型进行切割，并调整点的位置，如下图</span>
+<img src="./Blender.assets/image-20250228211447806.png" alt="image-20250228211447806"></p></li><li><p><span>选择中键的一条线，向Z方向向下拉。</span>
+<img src="./Blender.assets/image-20250228211559602.png" alt="image-20250228211559602">
+<img src="./Blender.assets/image-20250228211633717.png" alt="image-20250228211633717">
+<img src="./Blender.assets/image-20250228211759660.png" alt="image-20250228211759660"></p></li><li><p><span>按照上面的方法做出另一个细长的叶子</span></p><p><img src="./Blender.assets/image-20250228213317623.png" alt="image-20250228213317623"></p></li><li><p><span>再复制一个叶子，调整叶子形态，做出三个不同形状的叶子。</span>
+<img src="./Blender.assets/image-20250228213846108.png" alt="image-20250228213846108"></p></li><li><p><span>制作棕榈树叶。</span>
+<span>先复制一个细叶子，将添加的所有修改器应用。</span>
+<span>再将树叶旋转90°，由水平转到垂直。再将叶片原点移动到叶柄位置。</span><img src="./Blender.assets/image-20250228214624988.png" alt="image-20250228214624988"></p></li><li><p><strong><span>阵列修改器使用：</span></strong><span>添加一个阵列修改器，设置如下参数。</span>
+<img src="./Blender.assets/image-20250228214732619.png" alt="image-20250228214732619"></p></li><li><p><span>再新建一个圆柱体，作为叶片的杆子，调整圆柱体的形状，上细下粗的形态，再将其且切割数刀，便于后续弯曲。</span>
+<img src="./Blender.assets/image-20250228215811500.png" alt="image-20250228215811500"></p></li><li><p><span>选择所有叶子，添加一个</span><code>镜像</code><span>修改器</span>
+<img src="./Blender.assets/image-20250228220008514.png" alt="image-20250228220008514"></p></li><li><p><strong><span>晶格修改器：</span></strong><code>SHIFT+A</code><span>新建一个晶格，调整晶格的大小位置，让其包裹一侧所有的叶子，调整细分参数</span>
+<img src="./Blender.assets/image-20250228220656346.png" alt="image-20250228220656346">
+<img src="./Blender.assets/image-20250228220902729.png" alt="image-20250228220902729"></p></li><li><p><span>先选择叶子，再选择晶格，</span><code>CTRL+P</code><span>，选择晶格形变，将晶格和物体绑定再一个。</span>
+<img src="./Blender.assets/image-20250228221130800.png" alt="image-20250228221130800"></p></li><li><p><span>选择叶片，调整晶格修改器到镜像修改器之上，选择晶格修改器，进入编辑模式。调整晶格修改器各个顶点至满意的形状为止。</span>
+<img src="./Blender.assets/image-20250228222034094.png" alt="image-20250228222034094"><img src="./Blender.assets/image-20250228221932804.png" alt="image-20250228221932804"></p></li><li><p><span>选择叶子，将全部修改器应用（快捷方式：选择叶子，右键转换到网格），再删掉晶格即可。</span></p><p><span>再选择叶子和杆子，</span><code>CTRL+J</code><span>进行合并成为一个整体。</span></p><p><span>添加两个简易型变修改器，对模型进行简单形变操作。</span>
+<img src="./Blender.assets/image-20250228223139084.png" alt="image-20250228223139084">
+<span>这样棕榈树叶就做好了</span>
+<img src="./Blender.assets/image-20250228223305117.png" alt="image-20250228223305117"></p><p>&nbsp;</p><p>&nbsp;</p></li></ol><p><strong><span>大树树叶制作</span></strong></p><ol start='' ><li><p><span>找到上面做的较大的树叶，进入编辑模式，将原点移动到叶子的顶端。再添加一个阵列修改器</span>
+<img src="./Blender.assets/image-20250228223718482.png" alt="image-20250228223718482"></p></li><li><p><span>新建一个空物体（纯轴），使用阵列修改器的</span><code>物体偏移</code><span>模式，使用吸管工具吸取空物体，此时移动空物体会发现随物体生成很多</span>
+<img src="./Blender.assets/image-20250228225257283.png" alt="image-20250228225257283"></p></li><li><p><span>调整空物体与原物体的相对位置，完成后复制一个，调整两个物体的位置，至如下图所示的样子</span>
+<img src="./Blender.assets/image-20250228230718921.png" alt="image-20250228230718921"></p></li><li><p><span>新建一个细分12的柱体，作为大树的主干，和树桩制作方法类似，做出树根效果</span>
+<img src="./Blender.assets/image-20250228232414711.png" alt="image-20250228232414711"></p></li><li><p><span>新建一个空物体（立方体），将整个大树罩住，CTRL+P再将空物体和大树绑定在一起，这样拖动大树是树叶就不会散掉。</span>
+<img src="./Blender.assets/image-20250228233305027.png" alt="image-20250228233305027"></p></li><li><p><span>渲染模型图</span>
+<img src="./Blender.assets/image-20250228234021184.png" alt="image-20250228234021184"></p></li></ol><p>&nbsp;</p><h2 id='曲线修改器建模'><span>曲线（修改器）建模</span></h2><ul><li><p><span>曲线的基础介绍</span></p><ul><li><p><span>新建曲线</span>
+<img src="./Blender.assets/image-20250301095546399.png" alt="image-20250301095546399"></p></li><li><p>&nbsp;</p></li></ul></li></ul><h2 id='父子级和蒙皮修改器'><span>父子级和蒙皮修改器</span></h2><p><span>父子级关系</span>
+<span>先选择需要绑定的物体A，再选择物体B，</span><code>CTRL+P</code><span>，选择需要的模式，就可以将物体A和B绑定成父子级</span></p><p><span>在 Blender 中的每个物体或骨骼，最多只能有一个父级。如果一个物体已经有一个父级物体，给它另外一个父级，则 Blender 将移除之前的父级关系。在本章中使用 </span><em><span>父级层级</span></em><span> 时，它指父级的层次结构，即物体的父级、祖父级、曾祖父级等等。</span></p><p><span>案例：</span><strong><span>使用父子级关系和曲线制作一个藤曼</span></strong></p><ol start='' ><li><p><span>制作一个叶子。</span>
+<img src="./Blender.assets/image-20250301123131733.png" alt="image-20250301123131733"></p></li><li><p><span>新建一个柱子，制作一个细长的藤曼，复制一些叶片，将其排在藤曼两侧。并绑定父子级关系选择，顶点（基于三点）模式</span></p><p><img src="./Blender.assets/image-20250301123710068.png" alt="image-20250301123710068">
+<img src="./Blender.assets/image-20250301123749084.png" alt="image-20250301123749084"></p></li><li><p><span>新建一个路径曲线，调整其向上，可在编辑模式下开启显示法向。</span></p><p><span>调整路径，为藤曼添加一个路径修改器，吸取调整好的路径。</span>
+<img src="./Blender.assets/image-20250301124009304.png" alt="image-20250301124009304"></p><p><img src="./Blender.assets/image-20250301123950670.png" alt="image-20250301123950670">
+<img src="./Blender.assets/image-20250301124653670.png" alt="image-20250301124653670"></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p></li></ol><p><strong><span>蒙皮修改器</span></strong></p><ol start='' ><li><p><span>创建一个线，并为其添加一个蒙皮修改器</span>
+<img src="./Blender.assets/image-20250301125224942.png" alt="image-20250301125224942">
+<img src="./Blender.assets/image-20250301125245007.png" alt="image-20250301125245007"></p></li><li><p><span>操作：</span>
+<span>选择一个点，</span><code>e</code><span>挤出一个点</span>
+<span>选择一个点，</span><code>CTRL+A</code><span>可以调整半径</span>
+<img src="./Blender.assets/image-20250301125734547.png" alt="image-20250301125734547">
+<img src="./Blender.assets/image-20250301130953718.png" alt="image-20250301130953718"></p></li></ol><p>&nbsp;</p><p><strong><span>总结</span></strong></p><p><img src="./Blender.assets/image-20250301131036364.png" alt="image-20250301131036364"></p><p>&nbsp;</p><h2 id='置换修改器'><span>置换修改器</span></h2><ul><li><p><span>置换修改器使用步骤</span></p><ol start='' ><li><p><span>新建一个平面（模型），进入编辑模式，右键添加细分，将步数调高</span></p><p><img src="./Blender.assets/image-20250301132348373.png" alt="image-20250301132348373"></p></li><li><p><span>退出编辑模式，添加一个置换修改器，并添加一个贴图</span></p><p><img src="./Blender.assets/image-20250301132614351.png" alt="image-20250301132614351"><img src="./Blender.assets/image-20250301132712161.png" alt="image-20250301132712161">
+<img src="./Blender.assets/image-20250301132917297.png" alt="image-20250301132917297"></p></li><li><p><span>调整参数</span></p><p><img src="./Blender.assets/image-20250301133031008.png" alt="image-20250301133031008"></p></li></ol></li><li><p><span>案例：使用置换修改器制作石头模型</span></p><ol start='' ><li><p><span>创建一个立方体，添加一个细分为5的细分修改器。</span>
+<img src="./Blender.assets/image-20250301134033284.png" alt="image-20250301134033284"></p></li><li><p><span>添加一个置换修改器</span>
+<span>并选择一张</span><code>沃洛诺伊图</code><span>贴图，调整参数。得到石头形状</span></p><p><img src="./Blender.assets/image-20250301134911467.png" alt="image-20250301134911467"></p></li></ol></li></ul><p>&nbsp;</p><h2 id='案例小狐狸建模'><span>案例：小狐狸建模</span></h2><ul><li><p><span>设置背景参考图</span>
+<span>正视图：</span>
+<img src="./Blender.assets/image-20250301140221020.png" alt="image-20250301140221020">
+<span>侧视图：</span>
+<img src="./Blender.assets/image-20250301140236147.png" alt="image-20250301140236147"></p><p><img src="./Blender.assets/image-20250301140158951.png" alt="image-20250301140158951"></p></li><li><p><span>小狐狸头部建模</span></p><ol start='' ><li><p><span>新建一个立方体，罩住参考图小狐狸的头，不包括耳朵</span><span>	</span>
+<span>为立方体添加一个细分为2的表面细分修改器</span>
+<img src="./Blender.assets/image-20250301141955591.png" alt="image-20250301141955591"></p><p><img src="./Blender.assets/image-20250301142015349.png" alt="image-20250301142015349"></p></li><li><p><span>调整球体的位置，缩放使其覆盖到参考图</span>
+<img src="./Blender.assets/image-20250301142438186.png" alt="image-20250301142438186"></p></li><li><p><span>调整完成后，将表面细分修改器应用，删除一半的脸模型，再添加一个镜像修改器</span></p><p><img src="./Blender.assets/image-20250301143005437.png" alt="image-20250301143005437">
+<img src="./Blender.assets/image-20250301143053148.png" alt="image-20250301143053148"><span>	</span></p></li><li><p><span>调整头顶耳朵处的点的位置，完成后挤出狐狸的耳朵</span>
+<img src="./Blender.assets/image-20250301143654245.png" alt="image-20250301143654245">
+<img src="./Blender.assets/image-20250301143707285.png" alt="image-20250301143707285">
+<img src="./Blender.assets/image-20250301144023363.png" alt="image-20250301144023363"></p></li><li><p><span>扣出狐狸的耳蜗</span>
+<img src="./Blender.assets/image-20250301145637314.png" alt="image-20250301145637314"></p></li><li><p><span>添加一个细分为2的表面细分修改器</span>
+<img src="./Blender.assets/image-20250301144526640.png" alt="image-20250301144526640"></p><p>&nbsp;</p></li></ol></li><li><p><span>小狐狸身体建模</span></p><ol start='' ><li><p><span>新建一个立方体，加一个细分修改器并将其应用。调整立方体成参考图身体形状</span>
+<img src="./Blender.assets/image-20250301205806117.png" alt="image-20250301205806117">
+<img src="./Blender.assets/image-20250301205817590.png" alt="image-20250301205817590"></p><ol start='' ><li><p><span>挤出小狐狸的手和脚</span>
+<img src="./Blender.assets/image-20250301212134408.png" alt="image-20250301212134408"></p></li></ol></li></ol></li><li><p><span>小狐狸四肢和五官建模</span></p><ol start='' ><li><p><span>新建一个立方体，做鼻子</span>
+<img src="./Blender.assets/image-20250301213436074.png" alt="image-20250301213436074"></p></li><li><p><span>制作小狐狸的眼睛</span>
+<img src="./Blender.assets/image-20250301213930449.png" alt="image-20250301213930449"></p></li></ol></li><li><p><span>小狐狸尾巴</span></p><ol start='' ><li><p><span>切换到顶视图，新建一个路径曲线</span><code>R,Z,90</code><span>调整曲线的方向，将原点放在曲线的一端</span>
+<img src="./Blender.assets/image-20250301214405303.png" alt="image-20250301214405303"></p></li><li><p><span>为路径曲线添加倒角属性</span>
+<img src="./Blender.assets/image-20250301214526663.png" alt="image-20250301214526663"></p></li></ol></li></ul><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h1 id='材质篇'><span>材质篇</span></h1><p><strong><span>PBR是什么？</span></strong>
+<span>Physically-Based Rendering</span>
+<span>基于物理的渲染（英文简称PBR）是计算机图学中的着色方法，目的在于模拟光线的物理行为及其与材质的交互作用，从而实现逼真的视觉效果。PBR采用基于物理精确公式的算法来重现真实世界中的材质，从而生成一致性的逼真环境。</span></p><p><strong><span>什么是BRDF?</span></strong>
+<span>BRDF是双向反射分布函数（Bidirectional Reflectance Distribution Function，BRDF）</span>
+<span>用来定义给定入射方向上的辐射照度（irradiance），如何影响给定出射方向上的辐射率（radiance）。更笼统地说，它描述了入射光线经过某个表面反射后如何在各个出射方向上分布。也可理解为：光线从某个方向入射到表面后，能量被该表面吸收，然后再朝着各个方向发射出去。</span></p><p><strong><span>什么是BSDF?</span></strong></p><p><span>BSDF全称是Bidirectional Scattering Distribution Function，即双向散射分布函数，它是一个统称，由Bartell, Dereniak在1980年提出，一般包括BRDF（反射）和BTDF（透射），反映了一个面上不同方向的散射强度。有些还有BDDF(衍射)。</span></p><h2 id='材质基础'><span>材质基础</span></h2><h3 id='添加删除材质'><span>添加删除材质</span></h3><p><img src="./Blender.assets/image-20250303141640511.png" alt="image-20250303141640511"></p><p><span>在着色器编辑器中查看</span></p><p><img src="./Blender.assets/image-20250303141938217.png" alt="image-20250303141938217"></p><p>&nbsp;</p><h3 id='原理化bsdf'><span>原理化BSDF</span></h3><p><span>在着色器编辑器中</span>
+<img src="./Blender.assets/image-20250303142122826.png" alt="image-20250303142122826"></p><p>&nbsp;</p><p><strong><span>总结</span></strong><img src="./Blender.assets/image-20250303143735520.png" alt="image-20250303143735520"></p><p>&nbsp;</p><h3 id='添加有纹理的材质'><span>添加有纹理的材质</span></h3><p><span>五个基础节点</span></p><ul><li><p><code>SHIFT+A</code><span>新建一个物体</span></p></li><li><p><span>打开着色器编辑器</span></p></li><li><p><span>在着色编辑器中</span><code>SHIFT+a</code><span>新建一个</span><strong><span>图像纹理节点</span></strong>
+<img src="./Blender.assets/image-20250303160717535.png" alt="image-20250303160717535">
+<span>打开一张纹理</span>
+<img src="./Blender.assets/image-20250303160831135.png" alt="image-20250303160831135"></p></li><li><p><span>添加一个</span><strong><span>映射节点</span></strong><span>，用来改变纹理的位置</span>
+<img src="./Blender.assets/image-20250303161017665.png" alt="image-20250303161017665"></p></li><li><p><span>新建一个</span><code>纹理坐标</code><span>节点，控制纹理的生成模式</span>
+<img src="./Blender.assets/image-20250303161155091.png" alt="image-20250303161155091"></p></li></ul><p><strong><span>总结：</span></strong>
+<img src="./Blender.assets/image-20250303161631412.png" alt="image-20250303161631412"></p><p><img src="./Blender.assets/image-20250303161755189.png" alt="image-20250303161755189"></p><p><img src="./Blender.assets/image-20250303162115693.png" alt="image-20250303162115693"></p><ol start='' ><li><p><span>生成－基于全局坐标系，以世界坐标的中心点作</span>
+<span>为坐标0</span></p></li><li><p><span>UV-计算机会把3D的模型先转换成一个2D平</span>
+<span>面UV图，然后再跟你的2D纹理做一个对应映射。</span></p></li><li><p><span>物体－基于局部坐标系，计算机以物体本身的原点</span>
+<span>作为坐标0，也可以指定另外一个物体作为坐标0</span></p></li></ol><p>&nbsp;</p><h3 id='添加渐变纹理'><span>添加渐变纹理</span></h3><ol start='' ><li><p><span>新建一个物体</span></p></li><li><p><span>新建材质，新建一个颜色渐变节点（转换器菜单）</span>
+<img src="./Blender.assets/image-20250303162628698.png" alt="image-20250303162628698"></p></li><li><p><span>新建映射节点</span></p></li><li><p><span>新建纹理坐标节点</span></p></li><li><p><span>新建分离XYZ</span>
+<img src="./Blender.assets/image-20250303163044174.png" alt="image-20250303163044174"></p></li></ol><p><img src="./Blender.assets/image-20250303163513338.png" alt="image-20250303163513338"></p><p>&nbsp;</p><h3 id='添加程序化纹理'><span>添加程序化纹理</span></h3><p><img src="./Blender.assets/image-20250303163627033.png" alt="image-20250303163627033"></p><p><img src="./Blender.assets/image-20250303163711085.png" alt="image-20250303163711085"></p><p>&nbsp;</p><h3 id='用蒙版做纹理叠加'><span>用蒙版做纹理叠加</span></h3><p><span>步骤介绍：</span></p><ol start='' ><li><p><span>打开一个模型，以蘑菇模型为例</span></p></li><li><p><span>选择蘑菇头，新建一个材质。新建一个图像纹理</span></p></li><li><p><span>新建一个</span><strong><span>映射</span></strong><span>节点和</span><strong><span>纹理坐标</span></strong><span>节点</span>
+<img src="./Blender.assets/image-20250303170248494.png" alt="image-20250303170248494"></p></li><li><p><span>选择蘑菇杆，新建材质。</span></p></li><li><p><span>新建渐变颜色节点，映射节点及纹理坐标节点</span></p><p><span>可以安装插件</span>
+<img src="./Blender.assets/image-20250303170525835.png" alt="image-20250303170525835">
+<span>安装完成后选择渐变颜色节点按</span><code>CTRL+t</code><span>可以快速创建</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51875px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Node Wrangler 插件</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">先选中你要加的节点</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">按CtrT就可以自动添加映射和纹理坐标</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 69px;"></div><div class="CodeMirror-gutters" style="display: none; height: 69px;"></div></div></div></pre></li><li><p><span>新建</span><strong><span>分离XYZ</span></strong><span>节点</span></p></li><li><p><span>需求：制作多色蘑菇</span></p><p><span>方法1：选择蘑菇头，新建一个</span><strong><span>混合</span></strong><span>节点（转换器），将A B分别输入两个图层</span>
+<img src="./Blender.assets/image-20250303173156861.png" alt="image-20250303173156861"></p><p><span>方法2：新建一个颜色渐变修改器</span>
+<img src="./Blender.assets/image-20250303173610140.png" alt="image-20250303173610140"></p></li><li><p><strong><span>用蒙版做纹理叠加</span></strong>
+<span>新建混合节点</span>
+<img src="./Blender.assets/image-20250303174257038.png" alt="image-20250303174257038"></p></li><li><p><span>为蘑菇上的一个小点点添加材质，调整成自发光效果，之后先选择其他点点，再选择添加材质的点，</span><code>ctrl+L</code><span>关联材质，为其他点也添加上材质</span>
+<img src="./Blender.assets/image-20250303182838434.png" alt="image-20250303182838434"></p></li></ol><p>&nbsp;</p><h2 id='凹凸和置换形变'><span>凹凸和置换形变</span></h2><h3 id='为模型添加凹凸感'><span>为模型添加凹凸感</span></h3><p><span>凹凸感需要三个部分</span></p><ul><li><p><span>一个纹理（一般为黑白）</span></p></li><li><p><span>一个凹凸节点</span></p></li><li><p><span>一个纹理坐标</span></p></li></ul><p><span>步骤</span></p><ol start='' ><li><p><span>新建一个球，添加一个材质</span></p></li><li><p><span>新建一个纹理（如噪波纹理）和颜色渐变</span>
+<img src="./Blender.assets/image-20250303183617884.png" alt="image-20250303183617884"></p></li><li><p><span>新建一个凹凸节点</span>
+<img src="./Blender.assets/image-20250303184005346.png" alt="image-20250303184005346"></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51875px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Node Wrangler快捷键</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Ctrl+shift+鼠标左键单击</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">可以快速把一个节点连接到输出上预览</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 69px;"></div><div class="CodeMirror-gutters" style="display: none; height: 69px;"></div></div></div></pre></li></ol><p>&nbsp;</p><h3 id='使用网络下载的材质'><span>使用网络下载的材质</span></h3><ul><li><p><span>下载材质包</span>
+<img src="./Blender.assets/image-20250303200958660.png" alt="image-20250303200958660"></p></li><li><p><span>解压下载好的材质包</span></p></li><li><p><span>新建一个模型，为模型新建一个材质</span></p></li><li><p><span>添加一个图像纹理节点，选择材质图片</span>
+<img src="./Blender.assets/image-20250303202856650.png" alt="image-20250303202856650"></p><p><img src="./Blender.assets/image-20250303202841855.png" alt="image-20250303202841855"></p></li></ul><h3 id='置换形变'><span>置换形变</span></h3><p><span>使用上方制作好的地砖纹理凹凸效果</span></p><p><span>方法1：使用置换修改器</span></p><p><span>方法2：使用材质的置换节点</span></p><ul><li><p><span>将材质的模式由</span><code>仅凹凸</code><span>修改为</span><code>置换 凹凸</code>
+<img src="./Blender.assets/image-20250303203544080.png" alt="image-20250303203544080"></p></li><li><p><span>新建一个图像纹理节点，选择置换贴图如下图</span>
+<img src="./Blender.assets/image-20250303203657858.png" alt="image-20250303203657858">
+<img src="./Blender.assets/image-20250303203717170.png" alt="image-20250303203717170"></p></li><li><p><span>新建一个置换节点</span>
+<span>连接方式如下图：</span>
+<img src="./Blender.assets/image-20250303204147012.png" alt="image-20250303204147012"></p></li><li><p><span>调整缩放参数</span>
+<img src="./Blender.assets/image-20250303204230393.png" alt="image-20250303204230393"></p></li></ul><p>&nbsp;</p><p><strong><span>快速添加置换纹理的方法（插件）</span></strong></p><ol start='' ><li><p><span>先选择</span><strong><span>原理化BSDF修改器</span></strong></p></li><li><p><span>按快捷键</span><code>CTRL+SHIFT+T</code><span>，选择贴图，纹理，凹凸，法向 四张贴图</span>
+<img src="./Blender.assets/image-20250303205505443.png" alt="image-20250303205505443"></p></li></ol><p>&nbsp;</p><h2 id='混合材质节点'><span>混合材质节点</span></h2><p><span>下载免费的材质</span>
+<a href='https://ambientcg.com/'><span>ambientCG - CC0 Textures, HDRIs and Models</span></a></p><p><a href='https://polyhaven.com/'><span>Poly Haven</span></a></p><ul><li><p><span>新建一个石头模型</span></p></li><li><p><span>新建一个材质</span></p></li><li><p><span>快捷键</span><code>CTRL+SHIFT+T</code><span>选择贴图</span>
+<img src="./Blender.assets/image-20250303212156346.png" alt="image-20250303212156346"></p></li><li><p><span>新建一个BSDF节点，快捷键</span><code>CTRL+SHIFT+T</code><span>选择贴图</span></p><p><img src="./Blender.assets/image-20250303212325324.png" alt="image-20250303212325324"></p></li><li><p><span>新建一个</span><code>混合着色器</code><span>节点，将两个原理化BSDF节点混合，适当调整混合系数</span>
+<img src="./Blender.assets/image-20250303212539163.png" alt="image-20250303212539163"></p></li></ul><p>&nbsp;</p><h2 id='node-wrangler常用操作'><span>Node Wrangler常用操作</span></h2><ol start='' ><li><p><code>CtrL+T</code><span>快速自动加上纹理坐标和映射</span></p></li><li><p><code>CTRL+SHIFT+T</code><span>快速连接PBR材质</span></p></li><li><p><code>Ctrl+shift+单击</code><span>一个节点可以快速预览hiftCtrl Left</span></p></li><li><p><code>Ctrl+shift+右键</code><span>拖拉可以快速增加一个混合BSDF节点</span></p></li><li><p><code>ALT+S</code><span>快速切换混合节点的上下顺序</span></p></li></ol><p>&nbsp;</p><h2 id='简单的uv纹理绘制'><span>简单的UV纹理绘制</span></h2><h3 id='什么是uv'><span>什么是UV?</span></h3><p><span>简单的说，就是贴图影射到模型表面的依据。完整的说其实应该是UVW（因为XYZ已经用过了，所以另选三个字母表示）U和V分别是图片在显示器水平、垂直方向上的坐标，取值一般都是0~1，也就是（水平方向的第U个像素/图片宽度，垂直方向的第V个像素/图片高度）那W呢？贴图是二维的，何来三个坐标？嗯嗯，W的方向垂直于显示器表面，一般用于程序贴图或者某些3D贴图技术（记住，确实有三维贴图这种概念！），对于游戏而言不常用到，所以一般我们就简称UV了</span></p><h3 id='为什么要用uv'><span>为什么要用UV?</span></h3><p><span>对于一些有复杂花纹的模型进行贴图是，我们需要将模型进行UV展开再进行贴图。</span></p><p><img src="./Blender.assets/image-20250303215644594.png" alt="image-20250303215644594"></p><p><img src="./Blender.assets/image-20250303215659521.png" alt="image-20250303215659521"></p><p><img src="./Blender.assets/image-20250303215736571.png" alt="image-20250303215736571"></p><h3 id='如何查看模型的uv展开图'><span>如何查看模型的UV展开图</span></h3><p><span>拉出一个新的窗口，调整为UV编辑器模式</span></p><p><img src="./Blender.assets/image-20250303215924769.png" alt="image-20250303215924769"></p><p><span>选择模型，tab进入编辑模式，A全选模型，即可查看模型的UV展开图</span>
+<img src="./Blender.assets/image-20250303220011738.png" alt="image-20250303220011738"></p><h3 id='uv绘制的基本步骤'><span>UV绘制的基本步骤</span></h3><p><span>以为猴头添加一个UV贴图为例</span></p><ol start='' ><li><p><span>新建一个猴头模型，细分2次，添加一个材质</span>
+<img src="./Blender.assets/image-20250303220305483.png" alt="image-20250303220305483"></p></li><li><p><span>新建一个图像纹理，新建一张纹理，并调整参数</span>
+<img src="./Blender.assets/image-20250303220522513.png" alt="image-20250303220522513">
+<img src="./Blender.assets/image-20250303220631862.png" alt="image-20250303220631862"></p><p><span>进入猴头的编辑模式，便可以看到猴头的UV展开</span>
+<img src="./Blender.assets/image-20250303220747517.png" alt="image-20250303220747517"></p></li><li><p><span>进入纹理绘制模式，绘制纹理</span>
+<img src="./Blender.assets/image-20250303220846152.png" alt="image-20250303220846152"></p></li></ol><h3 id='案例为小狐狸上色'><span>案例：为小狐狸上色</span></h3><ol start='' ><li><p><span>打开小狐狸模型，新建一个材质将修改器应用</span></p></li><li><p><span>进入编辑模式，A全选，U展开中可以选择智能UV，如果拆分效果不满意，也可以手动进行拆解</span>
+<img src="./Blender.assets/image-20250303222723088.png" alt="image-20250303222723088"></p><p><span>手动拆解方法：</span></p><ul><li><p><span>ALT双击选择一圈线，U标记缝合边</span></p></li><li><p><span>标记完成后，A全选，再进行展开</span>
+<img src="./Blender.assets/image-20250303222657316.png" alt="image-20250303222657316"></p></li></ul></li><li><p><span>新建材质，创建五个如图所示的节点，并新建一个图像纹理(颜色：#C66234)</span>
+<img src="./Blender.assets/image-20250303223126059.png" alt="image-20250303223126059"></p></li><li><p><span>切换到纹理绘制模式进行绘制纹理，使用油漆桶创建一个渐变</span></p><p><img src="./Blender.assets/image-20250303223939483.png" alt="image-20250303223939483">
+<img src="./Blender.assets/image-20250303224031831.png" alt="image-20250303224031831"></p></li><li><p><span>为小狐狸耳朵添加材质</span></p><ul><li><p><span>进入编辑模式，选择耳朵所有的面</span>
+<img src="./Blender.assets/image-20250303224519373.png" alt="image-20250303224519373"></p></li><li><p><span>切换到纹理绘制模式，再点击绘制遮罩，再进行绘制即可</span><span>	</span>
+<img src="./Blender.assets/image-20250303224616794.png" alt="image-20250303224616794">
+<img src="./Blender.assets/image-20250303224711869.png" alt="image-20250303224711869"></p><p>&nbsp;</p></li><li><p><span>绘制完成后为耳朵上色</span>
+<img src="./Blender.assets/image-20250303224822385.png" alt="image-20250303224822385"></p></li></ul></li><li><p><span>为眼睛和鼻子添加一个黑色材质</span>
+<img src="./Blender.assets/image-20250303225049002.png" alt="image-20250303225049002"></p></li><li><p><span>为尾巴添加材质</span></p><p><img src="./Blender.assets/image-20250304105625471.png" alt="image-20250304105625471"></p></li><li><p><span>为身体添加材质</span>
+<img src="./Blender.assets/image-20250304105607226.png" alt="image-20250304105607226"></p></li></ol><p>&nbsp;</p><h1 id='添加粒子'><span>添加粒子</span></h1><h2 id='发射体粒子'><span>发射体粒子</span></h2><p><strong><span>实例：云朵下雨</span></strong></p><ol start='' ><li><p><span>为云朵新建一个粒子发射器</span>
+<img src="./Blender.assets/image-20250304154441314.png" alt="image-20250304154441314"></p></li><li><p><span>制作一个雨滴</span>
+<img src="./Blender.assets/image-20250304155921367.png" alt="image-20250304155921367"></p></li><li><p><span>将云朵的粒子发射器渲染调整为物体模式，选择水滴模型。</span>
+<img src="./Blender.assets/image-20250304160026899.png" alt="image-20250304160026899"></p><p><img src="./Blender.assets/image-20250304160012655.png" alt="image-20250304160012655"></p></li><li><p><span>粒子碰撞：当雨滴落到山上时，如果未添加碰撞，粒子会穿模。</span>
+<span>选择山体模型，添加一个碰撞</span>
+<img src="./Blender.assets/image-20250304160324919.png" alt="image-20250304160324919"></p></li></ol><p>&nbsp;</p><h2 id='毛发粒子'><span>毛发粒子</span></h2><p><strong><span>实例：种草种树</span></strong></p><ol start='' ><li><p><span>新建一个平面，添加一个粒子系统，调整模式为毛发</span>
+<img src="./Blender.assets/image-20250304160916049.png" alt="image-20250304160916049"></p></li><li><p><span>为平面新建一个材质，添加一个草地图片</span>
+<img src="./Blender.assets/image-20250304161522618.png" alt="image-20250304161522618"></p></li><li><p><span>调整粒子参数</span>
+<img src="./Blender.assets/image-20250304162132287.png" alt="image-20250304162132287"></p><p><img src="./Blender.assets/image-20250304162128369.png" alt="image-20250304162055810"></p></li><li><p><span>在地面植树</span>
+<img src="./Blender.assets/image-20250304162906206.png" alt="image-20250304162906206">
+<span>此时会发现种的树是躺着的，选择原来的模型，将其旋转。</span>
+<img src="./Blender.assets/image-20250304163046217.png" alt="image-20250304163046217"></p></li><li><p><span>勾选高级，可以调整毛发的旋转</span>
+<img src="./Blender.assets/image-20250304163220446.png" alt="image-20250304163220446"></p></li></ol><p><strong><span>主要需要的参数设置</span></strong></p><p><img src="./Blender.assets/image-20250304163704196.png" alt="image-20250304163704196"></p><h2 id='案例火焰粒子'><span>案例：火焰粒子</span></h2><ol start='' ><li><p><span>使用经纬球，建一个如下所示的火苗</span>
+<img src="./Blender.assets/image-20250304165033318.png" alt="image-20250304165033318">
+<img src="./Blender.assets/image-20250304165103149.png" alt="image-20250304165103149"></p></li><li><p><span>添加一个置换修改器</span>
+<img src="./Blender.assets/image-20250304165157712.png" alt="image-20250304165157712">
+<img src="./Blender.assets/image-20250304165218195.png" alt="image-20250304165218195"></p></li><li><p><span>调整参数，至合适</span><img src="./Blender.assets/image-20250304165404685.png" alt="image-20250304165404685"></p></li><li><p><span>模型非常毛糙，想要模型底部圆润，上方有火苗的效果。</span>
+<span>可以使用定点组权重设置。</span>
+<span>进入编辑模式，选择所需的点，点击“数据”面板，新建一个顶点组，指定一个定点组。调整权重</span></p><p><img src="./Blender.assets/image-20250304165728250.png" alt="image-20250304165728250"></p></li><li><p><span>进入权重模式，调整权重过渡，使其更加自然</span>
+<img src="./Blender.assets/image-20250304170208767.png" alt="image-20250304170208767"></p></li><li><p><span>返回物体模式，设置置换修改的定点组，可以看到模型变化，近上半部分发生了变化</span>
+<img src="./Blender.assets/image-20250304170202900.png" alt="image-20250304170202900"></p></li><li><p><span>添加一个火苗的动画让其运动</span></p><ol start='' ><li><p><span>新建一个空物体</span></p></li><li><p><span>设置置换修改器坐标改为“物体”</span>
+<span>并选择空物体</span>
+<img src="./Blender.assets/image-20250304170655292.png" alt="image-20250304170655292"></p></li><li><p><span>N调出菜单，选择空物体，设置Z轴参数为</span><code>frame*0.1</code><span>，按空格播放，可以看到火苗开始运动</span>
+<img src="./Blender.assets/image-20250304170818224.png" alt="image-20250304170818224"></p></li></ol></li><li><p><span>制作篝火的木头</span>
+<span>新建一个圆柱体</span>
+<img src="./Blender.assets/image-20250304171819484.png" alt="image-20250304171819484"></p></li><li><p><span>摆放木头和火焰</span>
+<img src="./Blender.assets/image-20250304172131716.png" alt="image-20250304172131716"></p></li><li><p><span>为木头添加材质</span>
+<img src="./Blender.assets/image-20250304173556224.png" alt="image-20250304173556224"></p></li><li><p><span>为火焰添加材质</span>
+<img src="./Blender.assets/image-20250304173608619.png" alt="image-20250304173608619"></p></li><li><p><span>为火焰添加粒子效果</span></p><ul><li><p><span>新建一个圆环，移动到物体上方</span>
+<span>将圆环填充，移动到火焰模型中，充当粒子发射器</span></p><p><img src="./Blender.assets/image-20250304173842603.png" alt="image-20250304173842603"></p></li><li><p><span>为圆盘添加粒子系统，调整参数</span></p><p><span>制作一个发光的模型，作为火焰粒子</span></p><p><img src="./Blender.assets/image-20250304185512231.png" alt="image-20250304185512231"></p></li></ul></li></ol><p>&nbsp;</p><p>&nbsp;</p><h1 id='场景灯光'><span>场景灯光</span></h1><p><a href='https://www.bilibili.com/video/BV14u41147YH/?p=26&amp;spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=4fd4da6d6671bb3e6a059f1200d7334f'><span>【场景灯光篇】5.1 新手小白的超级布光宝典</span><em><span>哔哩哔哩</span></em><span>bilibili</span></a></p><p><strong><span>世界光</span></strong><span>——奠定主基调</span></p><p><span>改任何参数都会影响到场景里的所有物体</span></p><p><strong><span>使用HDRI贴图制作天空效果</span></strong></p><p><span>在世界的着色器编辑器中新建一个环境纹理节点，选择HDRI贴图</span></p><p><strong><span>打光步骤</span></strong></p><p>&nbsp;</p><ol start='' ><li><p><span>先打世界光</span>
+<span>打光前思考一下：场景出现的基础环境在哪里?</span>
+<span>目的：定基调，打造基础光环境</span></p></li><li><p><span>再打场景光</span>
+<span>目的：让布光有主次，有逻辑，有美感</span></p></li></ol><p>&nbsp;</p><p>&nbsp;</p><h2 id='场景灯光打光'><span>场景灯光打光</span></h2><p><span>灯光模式</span></p><ul><li><p><span>点光</span></p></li><li><p><span>面光</span></p></li><li><p><span>日光</span></p></li><li><p><span>聚光</span></p></li></ul><p>&nbsp;</p><h2 id='三点打光'><span>三点打光</span></h2><p><img src="./Blender.assets/01b90c60f0e8be11013f4720cba298-1741096434034-5.jpg" alt="干货|如何掌握基础三点布光？ - 知乎"></p><ul><li><p><span>主光</span>
+<span>是场景的主要光源。「主光」这个词并不代表特定类型或强度的照明，它指的是照亮拍摄主体的主要光线。它可能源自某款灯具，也可以是透过窗户照射进来的阳光。</span></p></li><li><p><span>辅光</span>
+<span>补光往往用于填充主光在脸部或主体上造成的阴影区域。一般补光会比主光更柔和且强度更低，这样做的目的是在不产生额外阴影的前提下，让位于阴影处的脸部更加凸显。</span></p></li><li><p><span>背光</span>
+<span>背光，也被称为轮廓光（rimlight），是一种投射在头肩部的光线类型，它可以让拍摄主体相较于背景更加突出。背光通常被使用在较暗的场景中，避免主体融入暗色背景。</span></p></li></ul><p>&nbsp;</p><p><strong><span>总结</span></strong></p><p><img src="./Blender.assets/image-20250305134112987.png" alt="image-20250305134112987"></p><p>&nbsp;</p><h2 id='导入第三方素材'><span>导入第三方素材</span></h2><h3 id='如何导入第三方素材'><span>如何导入第三方素材</span></h3><p><img src="./Blender.assets/image-20250304220638366.png" alt="image-20250304220638366"></p><p><strong><span>关联与追加区别</span></strong></p><figure class='table-figure'><table><thead><tr><th>&nbsp;</th><th><span>优点</span></th><th><span>缺点</span></th></tr></thead><tbody><tr><td><span>关联</span></td><td><span>1.节省资源，防止文件过大</span><br/><span>2.一个模型可以关联给多个场景</span><br/><span>3.修改原文件，所有关联场景自动替换</span></td><td><span>没法直接修改，需要到源文件修改</span></td></tr><tr><td><span>追加</span></td><td><span>可以直接修改，方便快捷</span></td><td><span>导致场景文件过大，占用资源</span></td></tr></tbody></table></figure><p>&nbsp;</p><p><span>在blender文件之间，可以使用</span><code>CTRL+C</code><span>，</span><code>CTRL+V</code><span>迁移模型</span></p><p>&nbsp;</p><h3 id='导入其他格式的模型'><span>导入其他格式的模型</span></h3><p><img src="./Blender.assets/image-20250304221620198.png" alt="image-20250304221620198"></p><p>&nbsp;</p><h3 id='场景搭建'><span>场景搭建</span></h3><ul><li><p><span>将模型导入之前建模的工程中</span>
+<img src="./Blender.assets/image-20250304222202891.png" alt="image-20250304222202891"></p></li><li><p><img src="./Blender.assets/image-20250305135957045.png" alt="image-20250305135957045"></p></li></ul><p>&nbsp;</p><p>&nbsp;</p><h1 id='动画制作'><span>动画制作</span></h1><h2 id='时间轴动画基础'><span>时间轴动画基础</span></h2><p><span>时间轴：位于窗口下方</span>
+<img src="./Blender.assets/image-20250305140325486.png" alt="image-20250305140325486"></p><p><strong><span>打关键帧方法</span></strong></p><ul><li><p><span>选择物体，右键，插入关键帧,快捷键</span><code>I</code>
+<img src="./Blender.assets/image-20250305140509157.png" alt="image-20250305140509157"></p></li><li><p><span>使用快捷键</span><code>k</code><span>可以打开插入关键帧菜单</span>
+<img src="./Blender.assets/image-20250305140814625.png" alt="image-20250305140814625"></p></li></ul><p>&nbsp;</p><p><span>制作关键帧动画</span></p><ol start='' ><li><p><span>选择物体，</span><code>I</code><span>打一个关键帧，移动物体位置，再打一个关键帧</span></p></li><li><p><span>也可以使用自动插帧，只需要开启后移动物体位置和时间轴就可以自动记录改变的参数</span>
+<img src="./Blender.assets/image-20250305141607879.png" alt="image-20250305141607879"></p></li></ol><p>&nbsp;</p><h2 id='曲线编辑器'><span>曲线编辑器</span></h2><p><img src="./Blender.assets/image-20250305142340089.png" alt="image-20250305142340089"></p><p><span>使用动画曲线编辑器可以调整动画的速度曲线。</span></p><p>&nbsp;</p><p>&nbsp;</p><h2 id='形态键动画'><span>形态键动画</span></h2><h3 id='形态键介绍'><span>形态键介绍</span></h3><p><span>形态键可以把一个模型从当前的形态变成另外一种形状，比如：被捏扁的易拉罐</span></p><p>&nbsp;</p><p><strong><span>为模型添加形态键方法</span></strong></p><p><img src="./Blender.assets/image-20250305182444070.png" alt="image-20250305182444070"></p><p><img src="./Blender.assets/image-20250305194439627.png" alt="image-20250305194439627"><img src="./Blender.assets/image-20250305194426784.png" alt="image-20250305194426784"></p><p>&nbsp;</p><h3 id='案例蝴蝶飞舞形态动画'><span>案例：蝴蝶飞舞形态动画</span></h3><ol start='' ><li><p><span>制作一个蝴蝶模型</span>
+<img src="./Blender.assets/image-20250305200912072.png" alt="image-20250305200912072"></p></li><li><p><span>为蝴蝶添加一个材质，并制作一个飞舞动画</span></p><p><img src="./Blender.assets/image-20250305202220985.png" alt="image-20250305202220985">
+<img src="./Blender.assets/image-20250305202305226.png" alt="image-20250305202305226"></p></li><li><p><span>制作蝴蝶动画关键帧</span></p></li><li><p><span>添加动画修改器，让蝴蝶一直飞舞</span></p><ul><li><p><span>切换到曲线编辑器，展开帧找到</span><code>值</code>
+<img src="./Blender.assets/image-20250305202908863.png" alt="image-20250305202908863"></p></li><li><p><span>快捷键N，打开菜单</span>
+<img src="./Blender.assets/image-20250305202947688.png" alt="image-20250305202947688"></p></li><li><p><span>调整参数</span>
+<img src="./Blender.assets/image-20250305203118580.png" alt="image-20250305203118580"></p></li></ul><p>&nbsp;</p></li></ol><h3 id='案例蝴蝶飞舞路径动画'><span>案例：蝴蝶飞舞路径动画</span></h3><p><span>调整蝴蝶的大小和位置。置于合适的位置，在时间轴上对蝴蝶的位置，旋转等参数插入关键帧。</span>
+<img src="./Blender.assets/image-20250305204616549.png" alt="image-20250305204616549"></p><p>&nbsp;</p><h2 id='骨骼动画'><span>骨骼动画</span></h2><h3 id='骨骼的三种模式'><span>骨骼的三种模式</span></h3><p><span>新建一个骨骼</span>
+<img src="./Blender.assets/image-20250305204847687.png" alt="image-20250305204847687"></p><ul><li><p><span>物体模式</span></p></li><li><p><span>编辑模式</span></p></li><li><p><span>姿态模式</span></p></li></ul><p><img src="./Blender.assets/image-20250305205041056.png" alt="image-20250305205041056"></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p><span>如何绑定骨骼</span></p><ul><li><p><span>准备一个骨骼</span>
+<img src="./Blender.assets/image-20250306161751004.png" alt="image-20250306161751004"></p></li><li><p><span>搭建一个模型</span>
+<img src="./Blender.assets/image-20250306162229308.png" alt="image-20250306162229308"></p></li><li><p><span>将骨架和模型进行绑定</span></p><ol start='' ><li><p><span>绑定骨骼时，骨骼需要是物体模式</span></p></li><li><p><span>将骨架绑定为模型的父级，模式选择附带自动权重</span>
+<img src="./Blender.assets/image-20250306162651287.png" alt="image-20250306162651287"></p></li></ol></li><li><p><span>为骨骼设置动画</span>
+<img src="./Blender.assets/image-20250306163048429.png" alt="image-20250306163048429"></p></li></ul><p>&nbsp;</p><h3 id='权重'><strong><span>权重</span></strong></h3><p><span>在Blender中，要查看哪些骨骼有权重，可以进入“姿态模式”，选择一根骨骼，然后切换到“权重绘制”模式，按Ctrl+左键点选骨骼，就可以显示当前骨骼所影响的区域和权重。</span></p><p>&nbsp;</p><h2 id='物体约束'><span>物体约束</span></h2><p><strong><span>标准跟随</span></strong></p><ol start='' ><li><p><span>选择物体，添加物体跟随</span>
+<img src="./Blender.assets/image-20250306165928636.png" alt="image-20250306165928636"></p></li><li><p><span>用吸管吸取需要跟随的物体</span>
+<img src="./Blender.assets/image-20250306170308503.png" alt="image-20250306170308503"></p></li><li><p><span>调整跟踪轴和向上轴，调整猴头的方向</span>
+<img src="./Blender.assets/image-20250306170258037.png" alt="image-20250306170258037"></p></li></ol><p>&nbsp;</p><p>&nbsp;</p><h1 id='合成'><span>合成</span></h1><h2 id='合成面板设置'><span>合成面板设置</span></h2><p><span>打开合成器面板</span>
+<img src="./Blender.assets/image-20250305213921189.png" alt="image-20250305213921189"></p><p><strong><span>合成器的使用</span></strong></p><p><span>在渲染层和输出之间添加效果</span></p><p><img src="./Blender.assets/image-20250305214307288.png" alt="image-20250305214307288"></p><p><img src="./Blender.assets/image-20250305214404593.png" alt="image-20250305214404593"></p><p>&nbsp;</p><p><strong><span>合成器降噪使用</span></strong></p><p><img src="./Blender.assets/image-20250305214754278.png" alt="image-20250305214754278"></p><p><span>也可以使用节点进行降噪</span></p><p><img src="./Blender.assets/image-20250305215056362.png" alt="image-20250305215056362"></p><p>&nbsp;</p><h2 id='渲染输出视频'><span>渲染输出视频</span></h2><h3 id='检查输出属性设置'><span>检查输出属性设置</span></h3><p><img src="./Blender.assets/image-20250305220031200.png" alt="image-20250305220031200"></p><p>&nbsp;</p><h3 id='eevee输出设置'><span>Eevee输出设置</span></h3><p><img src="./Blender.assets/image-20250305220350040.png" alt="image-20250305220350040"></p><h3 id='cycles输出设置'><span>Cycles输出设置</span></h3><p><img src="./Blender.assets/image-20250305220612902.png" alt="image-20250305220612902"></p><p><span>注意：根据显卡性能，适当设置渲染的采样。否则显卡性能不足时，渲染时间很长</span></p><p>&nbsp;</p><p>&nbsp;</p><h3 id='输出mp4视频'><span>输出MP4视频</span></h3><p><span>场景灯光动画等制作完成后，使用</span><code>CTRL+F12</code><span>,渲染每一帧</span>
+<img src="./Blender.assets/image-20250305221334057.png" alt="image-20250305221334057">
+<img src="./Blender.assets/image-20250305221424754.png" alt="image-20250305221424754"></p><p><strong><span>完成渲染后合成视频：</span></strong></p><ul><li><p><span>打开视频编辑窗口</span>
+<img src="./Blender.assets/image-20250305221528553.png" alt="image-20250305221528553"></p></li><li><p><span>选择渲染好的图像序列，并设置输出参数</span>
+<img src="./Blender.assets/image-20250305221623737.png" alt="image-20250305221623737">
+<img src="./Blender.assets/image-20250305221909492.png" alt="image-20250305221909492"></p></li><li><p><span>渲染动画：快捷键</span><code>CTRL+F12</code>
+<img src="./Blender.assets/image-20250305222039581.png" alt="image-20250305222039581"></p></li></ul><p>&nbsp;</p></div></div>
+
+<script>(function(){function e(e,n,i){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var t=e.target;t&&t!=this;t=t.parentNode)if(t.matches(n)){!1===i.call(t,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)}var t=document.body.parentElement,i=[],r=null,o=document.body.classList.contains("typora-export-collapse-outline");function a(){return t.scrollTop}e("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),u(),!1}),e("click",".outline-item",function(e){var t=this.querySelector(".outline-label");location.hash="#"+t.getAttribute("href"),o&&((t=this.closest(".outline-item-wrapper").classList).contains("outline-item-open")||t.add("outline-item-open"),d(),t.add("outline-item-active"))});function s(){var e=a();r=null;for(var t=0;t<i.length&&i[t][1]-e<60;t++)r=i[t]}function n(){c=setTimeout(function(){var n;i=[],n=a(),document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(e=>{var t=e.getAttribute("id");i.push([t,n+e.getBoundingClientRect().y])}),s(),u()},300)}var l,c,d=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},u=function(){if(r&&(d(),t=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(r[0]):r[0])+'"]')))if(o){var e=t.closest(".outline-item-open>ul>.outline-item-wrapper");if(e)e.classList.add("outline-item-active");else{for(var t,n=(t=t.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");n;)n=(t=n).parentElement.closest(".outline-item-wrapper");t.classList.add("outline-item-active")}}else t.closest(".outline-item-wrapper").classList.add("outline-item-active")};window.addEventListener("scroll",function(e){l&&clearTimeout(l),l=setTimeout(function(){s(),u()},300)});window.addEventListener("resize",function(e){c&&clearTimeout(c),n()}),n()})();</script></body>
+</html>
